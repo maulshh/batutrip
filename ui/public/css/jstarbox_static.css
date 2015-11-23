@@ -1,0 +1,83 @@
+.positioner {
+	position: relative;
+	display: inline-block;
+	line-height: 0;
+}
+
+.starbox_static .colorbar,
+.starbox_static .ghost {
+	z-index: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.starbox_static .stars {
+	display: inline-block;
+}
+
+.starbox_static .stars .star_holder {
+	position: relative;
+	z-index: 1;
+}
+
+.starbox_static .stars .star_holder .star {
+	display: inline-block;
+	vertical-align: baseline;
+	background-repeat: no-repeat;
+}
+
+
+/* Override with your own image and size… */
+.starbox_static .stars .star_holder .star {
+	background-image: url('../img/rating.png');
+	width: 33px;
+	height: 33px;
+}
+
+/* Override with your own colours… */
+.starbox_static .stars { background: #cccccc; }
+.starbox_static .rated .stars { background: #dcdcdc; }
+.starbox_static .rated.hover .stars { background: #cccccc; }
+.starbox_static .colorbar { background: #ff8c0a; }
+.starbox_static .hover .colorbar { background: #ff8c0a; }
+.starbox_static .rated .colorbar { background: #ff8c0a; }
+.starbox_static .rated.hover .colorbar { background: #ff8c0a; }
+.starbox_static .ghost { background: #a1a1a1; }
+
+.starbox_static.small .stars .star_holder .star {
+	background-image: url('images/6-small.png');
+	width: 17px;
+	height: 17px;
+}
+
+.starbox_static.alternate .stars .star_holder .star {
+	background-image: url('images/ribbon.png');
+	width: 29px;
+	height: 28px;
+}
+
+.starbox_static.colours .stars { background: #f9c412; }
+.starbox_static.colours .hover .stars { background: #BD940F; }
+.starbox_static.colours .rated .stars { background: #dcdcdc; }
+.starbox_static.colours .rated.hover .stars { background: #cccccc; }
+.starbox_static.colours .colorbar { background: #a56a1c; }
+.starbox_static.colours .hover .colorbar { background: #f4341f; }
+.starbox_static.colours .rated .colorbar { background: #c29a65; }
+.starbox_static.colours .rated.hover .colorbar { background: #9f0e00; }
+.starbox_static.colours .ghost { background: #e2b6b2; }
+
+.starbox_static.gradient .stars .colorbar { background-image: url('gradient.png') !important; background-repeat: repeat-x; }
+
+#jumlah_rating{
+	background-color: #ff8c0a;
+	margin-top: -38px;
+	margin-left: 165px;
+	width: 40px;
+	padding: 8px;
+	padding-bottom: 7px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}

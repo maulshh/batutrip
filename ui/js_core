@@ -1,0 +1,36 @@
+var resolution = $(window).width();
+if(resolution >= 1024)
+{
+    $("#instruksi_large").css("display", "block");
+}
+
+function countChar(val) {
+    var len = val.value.length;
+    if(len >= 50){
+        $('#jumlah_komentar').text(len);
+        if(resolution >= 1024)
+        {
+            $("#instruksi_large").css("display", "none");
+        }
+        else
+        {
+            $("#instruksi_mobile").css("display", "none");
+            $("#btn_komentar").css("margin-top", "-12px");
+        }
+
+    }
+    else
+    {
+        $('#jumlah_komentar').text(len + " / 50");
+        $("#img_main").css("margin-left", -mrg);
+        if(resolution >= 1024)
+        {
+            $("#instruksi_large").css("display", "block");
+        }
+        else
+        {
+            $("#instruksi_mobile").css("display", "block");
+        }
+
+    }
+};

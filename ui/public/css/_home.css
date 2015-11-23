@@ -1,0 +1,610 @@
+#bg_utama {
+    overflow: hidden;
+    width: 100%;
+    height: 430px
+}
+
+#pencarian.large {
+    display: block;
+    width: 600px;
+    margin: auto;
+    margin-top: -280px
+}
+
+#pencarian.mobile {
+    display: none
+}
+
+#cari {
+    width: 575px;
+    margin-top: -1px;
+    padding: 8px;
+    border: none
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background-color: #ef7f00
+}
+
+#menu_cari {
+    width: 100px;
+    margin-right: 2px
+}
+
+#icon_cari {
+    margin-left: -50px
+}
+
+img.cari {
+    width: 20px;
+    margin-top: 6px
+}
+
+a.menu_cari {
+    margin-top: -1px;
+    padding: 7px;
+    padding-left: 15px;
+    border: 0;
+    border-radius: 0;
+    background-color: #037947
+}
+
+a.menu_cari:hover {
+    background-color: #ef7f00
+}
+
+.attr_pencarian {
+    margin-top: -33px;
+    margin-right: 1px
+}
+
+#bt_cari {
+    width: 98px;
+    margin-top: 1px;
+    margin-right: 5px;
+    padding: 7px;
+    border: none;
+    border-radius: 0;
+    background-color: #037947
+}
+
+#bt_cari:hover {
+    background-color: #ef7f00
+}
+
+.btn.menu_cari {
+    width: 98px;
+    text-align: left
+}
+
+#top_event {
+    margin-top: 240px
+}
+
+img.top_event, img.top_culinary, img.top_destination {
+    width: 100%
+}
+
+.area_wrap {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+    overflow: hidden
+}
+
+.image_dest, .image_culin {
+    /*width: 280px;*/
+    height: 170px;
+    overflow: hidden;
+    background-color: black
+}
+
+div.wrapper {
+    position: relative;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: -9px
+}
+
+div.description {
+    font-family: nexa_bold;
+    font-size: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 120px;
+    color: white;
+    background: rgba(0, 0, 0, 0.7)
+}
+
+#tanggal_event {
+    float: left;
+    width: 55px;
+    margin-left: 5px
+}
+
+.hari.top_event {
+    width: 100%;
+    margin-top: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    background-color: #037947
+}
+
+.tgl.top_event {
+    font-size: 23pt;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #545454;
+    background-color: #cdcdcd
+}
+
+.bln.top_event {
+    font-family: nexa_light;
+    float: left;
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #545454;
+    background-color: #cdcdcd
+}
+
+#konten_event {
+    float: left;
+    width: 250px;
+    border-radius: 4px
+}
+
+.judul.top_event {
+    font-size: 10pt;
+    width: 100%;
+    padding: 5px;
+    text-align: left
+}
+
+.lokasi.top_event, .lokasi.top_destination, .lokasi.top_culinary {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 5px
+}
+
+.lokasi.top_event {
+    width: auto;
+    font-size: 8pt;
+    margin-left: 15px
+}
+
+.lokasi.top_event > .fa-map-marker {
+    color: #037947
+}
+
+.lokasi.top_destination > h3 {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    line-height: 14pt;
+    color: #037947;
+    margin-left: -10px;
+    margin-top: -5px;
+    margin-bottom: 5px
+}
+
+.lokasi.top_event {
+    margin-top: -5px
+}
+
+.lokasi.top_destination > h3 > span {
+    color: #037947
+}
+
+h1.primary {
+    color: #0f91ff;
+    font-size: 20pt;
+    font-family: nexa_bold
+}
+
+h2.primary {
+    color: #0f91ff
+}
+
+h2.title_destination {
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    padding: 0;
+    font-size: 14pt;
+    font-family: nexa_light
+}
+
+h2.title_culinary {
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: 14pt;
+    font-family: nexa_light
+}
+
+#more_event {
+    font-family: nexa_light;
+    font-size: 13pt;
+    width: 140px;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px
+}
+
+#spacer_event {
+    margin-top: -10px;
+    margin-bottom: 15px;
+    background: url('../event_grid.png')
+}
+
+.overlay_event {
+    height: 55px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8)
+}
+
+#more_event:hover {
+    color: #037947;
+    border: 1px solid #037947
+}
+
+#area_destination, #area_culinary {
+    /*min-height: 210px;*/
+    margin: 0;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #cdcdcd
+}
+
+.harga {
+    margin-top: 3px;
+    margin-bottom: -5px;
+    font-family: nexa_light
+}
+
+#spacer_destination, #spacer_culinary {
+    margin-bottom: 10px
+}
+
+#more_destination, #more_culinary {
+    font-family: nexa_light;
+    font-size: 13pt;
+    width: 100%;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+    background-color: #037947;
+    border-radius: 4px
+}
+
+#more_destination:hover, #more_culinary:hover {
+    background-color: #ef7f00
+}
+
+.review {
+    margin-top: -3px;
+    margin-left: 0
+}
+
+.row_destination, .row_culinary {
+    margin: 0;
+    padding: 0
+}
+
+#destination.home {
+    margin-left: 0;
+    margin-right: -10px
+}
+
+#culinary.home {
+    margin-left: 0;
+    margin-right: 0
+}
+
+.lokasi.top_destination, .harga {
+    margin-left: -10px
+}
+
+.lokasi.top_destination.culinary {
+    margin-left: -10px;
+    margin-top: 0
+}
+
+.deskripsi.destination {
+    margin-top: -5px;
+    color: #545454
+}
+
+.text_dest, .text_culin {
+    /*margin-left: 15px*/
+}
+
+.marker_icon {
+    margin-left: -10px
+}
+
+.zoom {
+    width: 30px;
+    margin-left: -180px
+}
+
+.lokasi.top_destination > h3 {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+.lokasi.top_destination.home {
+    margin-left: 0
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 1025px) {
+    #konten_event {
+        float: left;
+        width: 240px
+    }
+
+    #top_event {
+        margin-top: 210px
+    }
+
+    #menu_cari {
+        width: 98px;
+        margin-right: 105px;
+        margin-left: 0
+    }
+
+    .attr_pencarian {
+        margin-top: -34px;
+        margin-right: -6px;
+        padding-top: 1px;
+        padding-bottom: 1px
+    }
+
+    #cari {
+        width: 475px;
+        margin-top: 0;
+        padding: 8px;
+        padding-bottom: 9px;
+        border: none
+    }
+
+    .review {
+        margin-top: -18px;
+        margin-left: -30px
+    }
+
+    .row_ {
+        margin-right: 20px;
+        padding: 0
+    }
+
+    h2.primary {
+        margin-top: 20px
+    }
+
+    #konten_event {
+        width: 238px
+    }
+
+    #spacer_event {
+        margin-bottom: 0
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    .x-navigation > li.xn-logo > a:first-child {
+        margin-left: 0
+    }
+
+    #top_event {
+        margin-top: 195px
+    }
+
+    #bt_cari {
+        margin-right: 0
+    }
+
+    #spacer_event {
+        margin-bottom: 5px
+    }
+
+    h2.primary {
+        margin-top: 20px
+    }
+
+    .lokasi.top_destination {
+        margin-left: 0
+    }
+
+    img.top_culinary {
+        margin-bottom: 5px
+    }
+
+    .image_dest, .image_culin {
+        width: 100%
+    }
+
+    .lokasi.top_destination.all {
+        margin-left: -20px
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    h2.title_destination {
+        margin-top: 10px
+    }
+
+    .x-navigation > li.xn-logo > a:first-child {
+        margin-left: 0
+    }
+
+    #bg_utama {
+        overflow: hidden;
+        width: 100%;
+        height: 200px
+    }
+
+    #pencarian.large {
+        display: none
+    }
+
+    #pencarian.mobile {
+        display: block;
+        margin-top: -130px
+    }
+
+    #cari_mobile {
+        width: 100%;
+        padding: 8px;
+        border: none
+    }
+
+    #menu_cari {
+        width: 98px;
+        margin-left: 0
+    }
+
+    #konten_event {
+        float: left;
+        width: 75%
+    }
+
+    div.wrapper {
+        margin-right: 0;
+        margin-left: 0
+    }
+
+    #bt_cari {
+        margin-right: 0
+    }
+
+    #value_rating {
+        width: 40px
+    }
+
+    .shape {
+        width: 170px;
+        margin-top: 5px
+    }
+
+    #top_event {
+        margin-top: 90px
+    }
+
+    .harga {
+        margin-top: -20px;
+        margin-bottom: 0
+    }
+
+    .review {
+        margin-top: -17px;
+        margin-left: -30px
+    }
+
+    .lokasi.top_destination {
+        margin-left: -10px
+    }
+
+    .lokasi.top_destination.all {
+        margin-left: -20px
+    }
+
+    .lokasi.top_destination > h3 {
+        margin-top: 0;
+        margin-left: 20px
+    }
+
+    .lokasi.top_event {
+        margin-left: 15px;
+        padding-bottom: 5px
+    }
+
+    .image_dest, .image_culin {
+        width: 100%
+    }
+
+    #destination.home {
+        margin: 0
+    }
+
+    #spacer_destination, #spacer_culinary {
+        margin-top: -15px
+    }
+
+    h2.primary {
+        margin-bottom: 5px
+    }
+
+    .text_culin {
+        margin-top: 10px
+    }
+
+    .text_dest, .text_culin {
+        margin-left: 0;
+        padding: 0
+    }
+
+    #jumlah_rating.home {
+        padding-top: 8px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 8px
+    }
+
+    h2.title_culinary {
+        margin: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 0
+    }
+
+    .marker_icon {
+        margin-left: -10px
+    }
+
+    .marker_icon.destinasi {
+        margin-left: -8px
+    }
+
+    .marker_icon.all.destinasi {
+        margin-left: -8px
+    }
+
+    .marker_icon.home {
+        margin-left: -8px
+    }
+
+    .lokasi.top_destination.culinary {
+        margin-left: -20px
+    }
+
+    .lokasi.top_destination > h3 {
+        margin-top: -5px;
+        margin-bottom: 10px
+    }
+
+    .lokasi.top_destination > h3.home {
+        margin-left: 10px;
+        margin-bottom: 5px
+    }
+
+    .harga.home {
+        margin-top: -10px
+    }
+}

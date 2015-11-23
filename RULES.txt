@@ -1,0 +1,12 @@
+On every project:
+->pakai best practice.
+->stereotype harus jelas.
+->selalu sediakan sebuah notepad bernama idea.php
+	+untuk menulisan ide2 yang muncul
+	+terbagi dalam ->global ->local ->problem ->idea
+	+jangan sungkan untuk nulis
+	+comment yang udah selesai
+	
+->selalu update best practice setiap kali selesai/dalam proses mengerjakan sebauah projek.
+
+->best practice php -> CodeIgniter dengan EMIF FRAMEWORK.w

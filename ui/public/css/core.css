@@ -1,0 +1,695 @@
+@font-face {
+    font-family: nexa_light;
+    src: url('../fonts/NexaLight.otf')
+}
+
+@font-face {
+    font-family: nexa_bold;
+    src: url('../fonts/NexaBold.otf')
+}
+
+.row {
+    margin: 0;
+    padding: 10px
+}
+
+.x-navigation.front {
+    background-color: #037947
+}
+
+#avatar_front {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    margin-right: 11px;
+    transition: 1s opacity;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%
+}
+
+#menu_saye {
+    display: none
+}
+
+.x-navigation.x-navigation-horizontal > .xn-search input {
+    width: 200px;
+    background-color: white
+}
+
+.x-navigation > li.xn-logo > a:first-child {
+    margin-left: -11px
+}
+
+#txt_header_konten {
+    font-family: nexa_bold;
+    font-size: 18pt;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 1px
+}
+
+.small_text {
+    font-size: 12pt
+}
+
+.text_judul {
+    font-family: nexa_bold;
+    font-size: 16pt;
+    font-weight: bold
+}
+
+.mini_button {
+    margin: 2px
+}
+
+textarea.komentar {
+    width: 100%;
+    height: 100px;
+    margin: 0;
+    padding: 10px;
+    border: 0;
+    border-radius: 4px
+}
+
+#avatar_small {
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    margin-right: 10px;
+    transition: 1s opacity;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%
+}
+
+#rating_penilaian_anda {
+    width: 215px
+}
+
+#marker_lokasi {
+    margin-top: 5px;
+    background-color: #037947;
+    border-radius: 45px;
+    width: 30px;
+    height: 32px;
+    padding: 3px;
+    color: white;
+    text-align: center;
+    float: left
+}
+
+#lokasi {
+    margin-top: 8px;
+    padding-left: 5px;
+    font-size: 12pt;
+    float: left;
+    color: #fff
+}
+
+.render_map.event {
+    width: 100%;
+    height: 200px
+}
+
+.render_map.kuliner {
+    width: 100%;
+    height: 185px
+}
+
+.render_map.destinasi {
+    width: 100%;
+    height: 323px
+}
+
+#area_responsive {
+    overflow: hidden;
+    width: 100%
+}
+
+#bar_pencarian {
+    background-color: #fff
+}
+
+.x-navigation li > a {
+    border-bottom: 1px solid #ef7f00
+}
+
+.x-navigation li > a:hover {
+    background-color: #ef7f00
+}
+
+.x-navigation li > a.active {
+    background-color: #ef7f00
+}
+
+#jumlah_komentar {
+    margin-top: 10px
+}
+
+#btn_komentar {
+    margin-top: 8px;
+    margin-left: 10px;
+    margin-bottom: 25px
+}
+
+#judul_hotel {
+    margin-top: 13px;
+    margin-bottom: 2px
+}
+
+.primary.colptk {
+    color: #037947;
+    text-align: center;
+    margin-top: 20px;
+    font-family: nexa_bold;
+    font-size: 22pt
+}
+
+.area_alasan {
+    font-family: nexa_light;
+    text-align: center;
+    font-size: 14pt;
+    padding: 10px
+}
+
+.area_komentar {
+    margin-left: 5px
+}
+
+h2.alasan {
+    margin-top: 10px
+}
+
+#alasan {
+    padding-top: 10px;
+    background-color: #fff;
+    padding-bottom: 30px
+}
+
+#footer {
+    background-color: #494747;
+    color: #cdcdcd;
+    padding-top: 20px
+}
+
+.deskripsi.alasan {
+    margin-top: -10px
+}
+
+h2.footer {
+    margin-bottom: 5px;
+    color: #fff
+}
+
+a.footer {
+    color: #cdcdcd;
+    text-decoration: none
+}
+
+a.footer:hover {
+    color: #037947
+}
+
+ul.footer {
+    list-style-type: none;
+    font-size: 12pt;
+    margin-top: -8px;
+    margin-left: -15px
+}
+
+li.footer {
+    margin-left: -40px;
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 10pt
+}
+
+img.logo_footer {
+    margin: auto;
+    height: 50px;
+    padding: 5px
+}
+
+h2.primary.footer {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-family: nexa_light
+}
+
+a.ubds {
+    color: #cdcdcd
+}
+
+a.ubds:hover {
+    color: #9acdf9
+}
+
+.light_text {
+    font-family: nexa_light
+}
+
+#area_container {
+    padding: 15px;
+    padding-top: 0
+}
+
+#ulasan_large {
+    font-size: 12pt;
+    width: 300px;
+    margin-top: -35px;
+    margin-left: 190px;
+    color: #cdcdcd
+}
+
+#ulasan_small {
+    display: none;
+    width: 300px;
+    margin-top: -25px;
+    margin-left: 225px;
+    padding-top: 5px;
+    color: #cdcdcd
+}
+
+#instruksi_large {
+    margin-top: 5px
+}
+
+#avatar_komentar, #nama_komentar {
+    text-align: left
+}
+
+#nama_komentar {
+    font-family: nexa_bold;
+    margin-top: -40px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    padding-left: 40px;
+    color: white;
+    border-radius: 4px;
+    background-color: #037947
+}
+
+#area_komentar {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    border-bottom: 1px solid #cdcdcd
+}
+
+#value_rating.komentar {
+    margin-top: 20px;
+    font-family: nexa_bold
+}
+
+.isi_komentar {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    text-align: left
+}
+
+#komentator_terbaik {
+    width: 100%;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px
+}
+
+#profil_komentar_terbaik {
+    background-color: #fff;
+    margin-bottom: 2px;
+    padding-bottom: 10px;
+    padding-left: 10px
+}
+
+#nama_komentator_terbaik {
+    margin-left: 50px;
+    margin-top: -40px;
+    height: 45px;
+    text-align: left;
+    padding: 5px
+}
+
+#komentar.text_judul {
+    margin-top: 0;
+    margin-bottom: 10px
+}
+
+#copyright {
+    background-color: #272727;
+    padding: 5px
+}
+
+.rating {
+    margin-left: -10px
+}
+
+div.normal {
+    margin: 0;
+    padding: 0
+}
+
+#profil_utama {
+    display: block;
+    margin-top: 0
+}
+
+#avatar_profil, #nama_profil {
+    text-align: right
+}
+
+#avatar_normal {
+    width: 80px;
+    height: 80px;
+    margin-top: 5px;
+    margin-right: 10px;
+    transition: 1s opacity;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%
+}
+
+#nama_profil {
+    font-family: nexa_bold;
+    margin-top: -40px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-right: 70px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    color: white;
+    border-radius: 20px;
+    background-color: #037947
+}
+
+.row.all_page {
+    padding-top: 60px;
+    min-height: 400px
+}
+
+.row.all_page.cari {
+    padding-top: 70px
+}
+
+h2.primary.all_page {
+    color: #273541
+}
+
+a.normal {
+    text-decoration: none
+}
+
+#ulasan_anda {
+    margin-left: 5px
+}
+
+#komentar_orang {
+    margin-top: 10px
+}
+
+.report.active {
+    background-color: #f00;
+    color: white
+}
+
+.like.active, .dislike.active {
+    background-color: #037947;
+    color: white
+}
+
+#waktu_komentar {
+    font-size: 10pt;
+    margin-top: 10px;
+    color: #cecece
+}
+
+#share_twitter, #share_facebook {
+    width: 100px;
+    float: left
+}
+
+#share_twitter {
+    margin-top: 3px
+}
+
+#last_post {
+    margin-top: -5px
+}
+
+.kontak {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+#captcha.kontak {
+    width: 140px;
+    margin-top: 0
+}
+
+#btn_kirim.kontak {
+    margin-top: -5px
+}
+
+#txt_header_konten.event {
+    margin-bottom: 0
+}
+
+a.website {
+    color: #fff;
+    text-decoration: none
+}
+
+a.website:hover {
+    color: #037947
+}
+
+img#img_background.large {
+    width: 100%
+}
+
+#company {
+    margin-top: 10px
+}
+
+.social_media {
+    margin-right: 10px;
+    color: #cdcdcd
+}
+
+.social_media:hover {
+    color: #037947
+}
+
+#social_media {
+    margin-top: 15px
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 1025px) {
+    #penilaian_anda {
+        width: 160px
+    }
+
+    #ulasan_small {
+        width: 10px;
+        display: block
+    }
+
+    #ulasan_large {
+        display: none;
+        margin-left: 210px
+    }
+
+    #judul_hotel {
+        margin-top: 0
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    #avatar_front {
+        display: none
+    }
+
+    #menu_saye {
+        display: block
+    }
+
+    #penilaian_anda {
+        width: 170px
+    }
+
+    .area_komentar {
+        margin-top: 10px;
+        margin-left: 5px
+    }
+
+    .area_footer {
+        margin-bottom: 20px
+    }
+
+    #komentar.text_judul {
+        z-index: 1;
+        padding: 10px;
+        margin-bottom: 0
+    }
+
+    #txt_header_konten {
+        margin-top: 0;
+        margin-bottom: 5px
+    }
+
+    .text_dest, .text_culin {
+        margin-left: 0
+    }
+
+    #last_post {
+        margin-top: 0
+    }
+
+    #profil_utama {
+        display: none
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .x-navigation > li.xn-logo > a:first-child {
+        margin-left: 0
+    }
+
+    #penilaian_anda {
+        margin-top: -85px;
+        padding-left: 5px
+    }
+
+    #ulasan_anda {
+        margin-top: -10px
+    }
+
+    #rating_penilaian_anda {
+        float: left !important;
+        margin-top: 35px;
+        margin-left: -5px
+    }
+
+    textarea.komentar {
+        margin-top: -10px
+    }
+
+    #instruksi_large {
+        display: none
+    }
+
+    #btn_komentar {
+        margin-top: -2px
+    }
+
+    #avatar_front {
+        display: none
+    }
+
+    #menu_saye {
+        display: block
+    }
+
+    #jumlah_komentar {
+        margin-top: 0
+    }
+
+    #instruksi_mobile {
+        margin-top: 0
+    }
+
+    #footer {
+        margin-top: -10px;
+        background-color: #545454
+    }
+
+    .area_footer {
+        margin-bottom: 20px
+    }
+
+    #ulasan_large {
+        display: none
+    }
+
+    #ulasan_small {
+        font-size: 12pt;
+        display: block
+    }
+
+    #value_rating.komentar {
+        margin-top: 10px
+    }
+
+    #txt_header_konten {
+        margin-bottom: 0;
+        margin-top: -5px
+    }
+
+    #area_container {
+        padding-top: 5px
+    }
+
+    #area_komentar {
+        margin-top: 20px;
+        margin-left: 0;
+        margin-right: 5px
+    }
+
+    #komentar.text_judul {
+        z-index: 1;
+        padding: 10px;
+        margin-bottom: 0
+    }
+
+    #text_tulisan {
+        margin-right: 5px;
+        margin-left: 5px
+    }
+
+    .row.all_page {
+        min-height: auto
+    }
+
+    #copyright {
+        margin-bottom: 0
+    }
+
+    h2.alasan {
+        margin-bottom: 15px
+    }
+
+    #komentar_orang {
+        margin-top: 0
+    }
+
+    #ulasan_small.event {
+        margin-top: -28px;
+        margin-left: 215px
+    }
+
+    #profil_utama {
+        display: none
+    }
+}
+
+@media print {
+    #header, #footer, #menu {
+        display: none
+    }
+
+    body {
+        font: 12pt georgia, serif
+    }
+
+    h1 {
+        font-size: 18pt
+    }
+
+    h2 {
+        font-size: 16pt;
+        color: #000
+    }
+}
