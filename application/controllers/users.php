@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users extends EMIF_Controller {
+class Users extends B_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -8,7 +8,7 @@ class Users extends EMIF_Controller {
     }
 
     public function _loaddata($module, $permission, $bol=false){
-        if(!$this->mpermissions->get($this->session->userdata('role_id'), $module, $permission)){
+        if(!$this->user->check_permission($this->session->userdata('role_id'), $module, $permission)){
             if($bol) return false;
             redirect(base_url('login?error=k'));
         }
@@ -42,7 +42,7 @@ class Users extends EMIF_Controller {
         }
         $this->data['pages'] = 'Profile'.($username?" $username":"");
         $this->data['profile'] = $this->musers->get(array('username'=>$username?$username:$this->session->userdata('username')));
-        $this->data['editable'] = !$username || $this->mpermissions->get($this->session->userdata('role_id'), 'user', 'access-all');
+        $this->data['editable'] = !$username || $this->user->check_permission($this->session->userdata('role_id'), 'user', 'access-all');
         $this->data['content'] = $this->load->view('profile', $this->data, true);
         $this->load->view('template', $this->data);
     }
@@ -59,7 +59,7 @@ class Users extends EMIF_Controller {
                 $error = array('error' => $this->upload->display_errors());
                 echo "<script type='text/javascript'>alert('gagal upload foto $error[error] !');history.go(-1)</script>";
             } else {
-                $this->musers->set(
+                $this->musers->edit(
                     array('user_id'=>$this->input->post('user_id')),
                     array('pict'=>$target.$this->input->post('user_id').'.jpg')
                 );
@@ -77,7 +77,7 @@ class Users extends EMIF_Controller {
         $user = $this->musers->get($this->input->post('user_id'));
         if(md5($this->input->post('old-pass')) == $user->pass){
             if($this->input->post('pass') == $this->input->post('re-pass')){
-                $this->musers->set(
+                $this->musers->edit(
                     array('user_id'=>$this->input->post('user_id')),
                     array('pass'=>md5($this->input->post('pass')))
                 );
@@ -144,7 +144,7 @@ class Users extends EMIF_Controller {
         $this->_loaddata('admin-satu', 'read');
         if($id == $this->session->userdata('user_id')|| $this->session->userdata('role_id')<=2){
             $data = $this->input->post(NULL);
-            if($this->musers->set($id, $data)){
+            if($this->musers->edit($id, $data)){
                 $this->session->set_userdata('username', $data['username']);
                 redirect(base_url('users/profile/'.$data['username']));
             }

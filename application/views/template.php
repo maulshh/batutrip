@@ -118,7 +118,7 @@
             <ul class="sidebar-menu">
                 <?php $depth = 1;
                 //print_r($menus);
-                foreach ($menus as $menu){
+                foreach ($back_menus as $menu){
                 $pos = explode('-', $menu->position);
                 while ($depth > count($pos)){
                 ?>

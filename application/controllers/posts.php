@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Posts extends EMIF_Controller {
+class Posts extends B_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -8,7 +8,7 @@ class Posts extends EMIF_Controller {
     }
 
     public function _loaddata($module, $permission, $bol=false){
-        if(!$this->mpermissions->get($this->session->userdata('role_id'), $module, $permission)){
+        if(!$this->user->check_permission($this->session->userdata('role_id'), $module, $permission)){
             if($bol) return false;
             redirect(base_url('login?error=k'));
         }
@@ -19,7 +19,7 @@ class Posts extends EMIF_Controller {
     }
 
     public function _loaddata_user($module, $permission){
-        if(!$this->mpermissions->get($this->session->userdata('role_id'), $module, $permission))
+        if(!$this->user->check_permission($this->session->userdata('role_id'), $module, $permission))
             redirect(base_url('no_permission'));
         $this->data['sites'] = $this->msites->get();
         $data['site_menus'] = $this->mmenus->get_menus('site-menu', $this->session->userdata('role_id'));
@@ -53,7 +53,7 @@ class Posts extends EMIF_Controller {
         if((!$this->data['post']->public || $this->data['post']->status != 'published') && $this->data['post']->user_id != $this->session->userdata('user_id'))
             redirect(base_url('no_permission'));
         $this->data['editable'] = $this->data['post']->user_id == $this->session->userdata('user_id') ||
-            $this->mpermissions->get($this->session->userdata('role_id'), 'post', 'update-all-delete-all');
+            $this->user->check_permission($this->session->userdata('role_id'), 'post', 'update-all-delete-all');
         $this->mposts->visited($id);
         $this->data['loginmodal'] = $this->load->view('modal/login', array('sites'=>$this->data['sites']), true);
         $this->data['content'] = $this->load->view($this->data['post']->view, $this->data, true);
@@ -76,7 +76,7 @@ class Posts extends EMIF_Controller {
         if((!$this->data['post']->public || $this->data['post']->status != 'published') && $this->data['post']->user_id != $this->session->userdata('user_id'))
             redirect(base_url('no_permission'));
         $this->data['editable'] = $this->data['post']->user_id == $this->session->userdata('user_id') ||
-            $this->mpermissions->get($this->session->userdata('role_id'), 'post', 'update-all-delete-all');
+            $this->user->check_permission($this->session->userdata('role_id'), 'post', 'update-all-delete-all');
         $this->mposts->visited($this->data['post']->post_id);
         $this->data['loginmodal'] = $this->load->view('modal/login', array('sites'=>$this->data['sites']), true);
         $this->data['content'] = $this->load->view($this->data['post']->view, $this->data, true);
@@ -101,7 +101,7 @@ class Posts extends EMIF_Controller {
     public function manage($type){
         $this->_loaddata('post', 'read');
         $type = str_replace('-', ' ', $type);
-        if($this->mpermissions->get($this->session->userdata('role_id'), 'post', 'read-all'))
+        if($this->user->check_permission($this->session->userdata('role_id'), 'post', 'read-all'))
             $this->data['all'] = $this->mposts->get_many(array('post_type'=>$type));
         else
             $this->data['all'] = $this->mposts->get_many(array('post_type'=>$type, 'user_id'=>$this->session->userdata('user_id')));
@@ -175,7 +175,7 @@ class Posts extends EMIF_Controller {
         $this->_loaddata('post', 'update');
         $data = $this->input->post(NULL);
         $post = $this->mposts->get($id);
-        if($this->mpermissions->get($this->session->userdata('role_id'), 'post', 'update-all')
+        if($this->user->check_permission($this->session->userdata('role_id'), 'post', 'update-all')
             || $post->user_id == $this->session->userdata('user_id')){
             $tags = $data['tags'];
             unset($data['tags']);
@@ -186,7 +186,7 @@ class Posts extends EMIF_Controller {
                 $data['uri'] = 'posts/view/'.$id;
             }
             $data['status'] = $this->input->post('status')=='Publish'?'published':'draft';
-            $this->mposts->set($id, array_merge($data,
+            $this->mposts->edit($id, array_merge($data,
                 array('commentable'=>$data['commentable'])));
             if($tags != '')
                 $this->mtags->add($id, $tags);
@@ -199,7 +199,7 @@ class Posts extends EMIF_Controller {
     public function delete($id){
         $this->_loaddata('post', 'delete');
         $post = $this->mposts->get($id);
-        if($this->mpermissions->get($this->session->userdata('role_id'), 'post', 'delete-all')
+        if($this->user->check_permission($this->session->userdata('role_id'), 'post', 'delete-all')
             || $post->user_id == $this->session->userdata('user_id')){
             $this->mposts->delete(array('post_id' => $id));
             $type = str_replace('-', ' ', $post->post_type);

@@ -4,14 +4,14 @@ if (!defined('BASEPATH'))
 /**
  *
  */
-class Logout extends EMIF_Controller {
+class Logout extends B_Controller {
 
     public function __construct() {
         parent::__construct();
     }
 
     public function _loaddata($module, $permission, $bol=false){
-        if(!$this->mpermissions->get($this->session->userdata('role_id'), $module, $permission)){
+        if(!$this->user->check_permission($this->session->userdata('role_id'), $module, $permission)){
             if($bol) return false;
             redirect(base_url('login?error=k'));
         }

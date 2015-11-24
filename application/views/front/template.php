@@ -26,26 +26,32 @@
     <div class="page-content">
         <ul class="x-navigation x-navigation-horizontal front">
             <li class="xn-logo front">
-                <a href="http://www.pontianakite.com">Batutrip</a>
-                <a href="http://www.pontianakite.com" class="x-navigation-control"></a>
+                <a href="<?=base_url()?>">Batutrip</a>
+                <a href="<?=base_url()?>" class="x-navigation-control"></a>
             </li>
-            <li class="menu pull-right">
-                <a href="http://www.pontianakite.com/login"><span class="xn-text">Login</span></a>
+            <?php
+            $depth = 1;
+            //print_r($menus);
+            foreach ($menus as $menu){
+            $pos = explode('-', $menu->position);
+            if($depth > count($pos)){?>
+                </ul>
             </li>
-            <li class="menu pull-right">
-                <a href="http://news.pontianakite.com"><span class="xn-text">News</span></a>
+            <?php 	}
+            $depth = count($pos);
+            if($menu->uri != '#'){?>
+            <li title="<?php echo $menu->title?>" <?php if($pages == $menu->content) echo 'class="active"'?>>
+                <a href="<?php echo base_url($menu->uri);?>">
+                    <span class="xn-text"><?php echo $menu->content?></span>
+                </a>
             </li>
-            <li class="menu pull-right">
-                <a href="http://www.pontianakite.com/all/destinasi" id="destinasi"><span
-                        class="xn-text">Destinasi</span></a>
-            </li>
-            <li class="menu pull-right">
-                <a href="http://www.pontianakite.com/all/kuliner" id="kuliner"><span class="xn-text">Kuliner</span></a>
-            </li>
-            <li class="menu pull-right">
-                <a href="http://www.pontianakite.com/all/event" id="event"><span class="xn-text">Event</span></a>
-            </li>
-        </ul>
+        <?php 	} else {?>
+            <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $menu->content?> <i class="fa fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+                <?php 	}
+                }?>
+            </ul>
 
         <div class="content">
             <?=$content?>
@@ -87,80 +93,13 @@
                     <h2 class="primary footer">Sitemap</h2>
                     <ul class="footer">
                         <div class="col-md-6 col-xs-6">
+                            <?php foreach ($site_menus as $menu){?>
                             <li class="footer">
-                                <a href="http://www.pontianakite.com/login" class="footer" data-toggle="tooltip"
+                                <a href="<?php echo base_url($menu->uri)?>" class="footer" data-toggle="tooltip"
                                    data-placement="right" title=""
-                                   data-original-title="login sebagai pengguna">Login</a>
+                                   data-original-title="<?php echo $menu->title?>"><?php echo $menu->content?></a>
                             </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/signup" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="mendaftar akun baru">Daftar</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/all/event" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="seluruh data event">Event</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/all/kuliner" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title=""
-                                   data-original-title="seluruh data kuliner">Kuliner</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/all/destinasi" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="seluruh data destinasi">Destinasi</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://news.pontianakite.com" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="berita kota batu">News</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/tentang" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title=""
-                                   data-original-title="tentang Batutrip">Tentang</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/ketentuan" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title=""
-                                   data-original-title="ketentuan penggunaan">Ketentuan</a>
-                            </li>
-                        </div>
-                        <div class="col-md-6 col-xs-6">
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/kontak" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="kerjasama atau teknis">Kontak
-                                    Kami</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/oauth/twitter" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title=""
-                                   data-original-title="login dengan twitter">Twitter</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/oauth/instagram" class="footer"
-                                   data-toggle="tooltip" data-placement="right" title=""
-                                   data-original-title="login dengan instagram">Instagram</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/oauth/facebook" class="footer"
-                                   data-toggle="tooltip" data-placement="right" title=""
-                                   data-original-title="login dengan facebook">Facebook</a>
-                            </li>
-                            <li class="footer">
-                                <a href="http://www.pontianakite.com/oauth/google" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="login dengan Google">Google+</a>
-                            </li>
-                            <li class="footer">
-                                <a href="https://twitter.com/pontianakite" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="twitter kami">@batutrip</a>
-                            </li>
-                            <li class="footer">
-                                <a href="https://instagram.com/pontianakite/" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="instagram kami">instagram/batutrip</a>
-                            </li>
-                            <li class="footer">
-                                <a href="https://www.facebook.com/pontianakite" class="footer" data-toggle="tooltip"
-                                   data-placement="right" title="" data-original-title="facebook kami">fb.com/batutrip</a>
-                            </li>
+                            <?php }?>
                         </div>
                     </ul>
                 </div>

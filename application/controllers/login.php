@@ -4,20 +4,18 @@ if (!defined('BASEPATH'))
 /**
  *
  */
-class Login extends EMIF_Controller {
+class Login extends B_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->_loadmodel(array('musers', 'msites', 'mpermissions'));
+        $this->_loadmodel(array('user'));
     }
 
     public function _loaddata($module, $permission, $bol=false){
-        if(!$this->mpermissions->get($this->session->userdata('role_id'), $module, $permission)){
+        if(!($this->data = $this->user->check_permission($this->session->userdata('role_id'), $module, $permission))){
             if($bol) return false;
-            redirect(base_url('dashboard'));
+            redirect(base_url('no_permission'));
         }
-		$this->data = NULL;
-        $this->data['sites'] = $this->msites->get();
         return true;
 	}
 
@@ -40,7 +38,7 @@ class Login extends EMIF_Controller {
         }
         $usr = $this->input->post('email');
         $pass = $this->input->post('pass');
-        $query = $this->musers->user_auth($usr, $pass);
+        $query = $this->user->auth($usr, $pass);
 //        print_r($query);
         if($query) {
             $arryauser = array(

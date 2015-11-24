@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Mcomments extends EMIF_Model
+class Mcomments extends B_Model
 {
 
     public function __construct()
@@ -36,11 +36,11 @@ class Mcomments extends EMIF_Model
         $data = array_merge($data, array('module' => 'comment'));
         $data = $this->mnodes->add($data);
         parent::add($data);
-        $this->set(array('comment_id' => $data['comment_id'], 'uri' => ''), array('uri' => 'comments/view/' . $data['comment_id']));
+        $this->edit(array('comment_id' => $data['comment_id'], 'uri' => ''), array('uri' => 'comments/view/' . $data['comment_id']));
         return $data['comment_id'];
     }
 
-    public function set($where, $data)
+    public function edit($where, $data)
     { //overrides parent method set
         if ($where && !is_array($where))
             $where = array('node_id' => $where);
@@ -48,7 +48,7 @@ class Mcomments extends EMIF_Model
             $where['node_id'] = $where['comment_id'];
             unset($where['comment_id']);
         }
-        $data = $this->mnodes->set($where, $data);
+        $data = $this->mnodes->edit($where, $data);
 
         if ($data != array()) {
             if (isset($where['node_id'])) {
@@ -56,7 +56,7 @@ class Mcomments extends EMIF_Model
                 unset($where['node_id']);
             }
             $this->db->join('nodes', 'nodes.node_id = comments.comment_id');
-            return parent::set($where, $data);
+            return parent::edit($where, $data);
         }
         return true;
     }
@@ -64,18 +64,18 @@ class Mcomments extends EMIF_Model
     public function commented($id, $minus=false)
     {
         if($minus)
-            $this->db->set('comment_count', 'comment_count-1', false);
+            $this->db->edit('comment_count', 'comment_count-1', false);
         else
-            $this->db->set('comment_count', 'comment_count+1', false);
-        return parent::set(array('comment_id' => $id), array());
+            $this->db->edit('comment_count', 'comment_count+1', false);
+        return parent::edit(array('comment_id' => $id), array());
     }
 
     public function rateup($id, $minus=false)
     {
         if($minus)
-            $this->db->set('rateup', 'rateup-1', false);
+            $this->db->edit('rateup', 'rateup-1', false);
         else
-            $this->db->set('rateup', 'rateup+1', false);
-        return parent::set(array('comment_id' => $id), array());
+            $this->db->edit('rateup', 'rateup+1', false);
+        return parent::edit(array('comment_id' => $id), array());
     }
 }

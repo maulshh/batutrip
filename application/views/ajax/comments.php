@@ -7,8 +7,8 @@
                          style="width:<?=$depth==1?"64":"48" ?>px">
                 </div>
                 <span itemprop="name" class="col-md-9 col-xs-9">
-                    <?php if($this->mpermissions->get($this->session->userdata('role_id'), 'comment', 'update-all') ||
-                        ($this->mpermissions->get($this->session->userdata('role_id'), 'comment', 'update-all') && $this->session->userdata('user_id') == $comment->user_id)){ ?>
+                    <?php if($this->user->check_permission($this->session->userdata('role_id'), 'comment', 'update-all') ||
+                        ($this->user->check_permission($this->session->userdata('role_id'), 'comment', 'update-all') && $this->session->userdata('user_id') == $comment->user_id)){ ?>
                         <a rel="nofollow" class="comment-reply-link pull-right"  href="#comment-<?=$comment->comment_id?>"
                            onclick="delete_comment('#comment-<?=$comment->comment_id?>', <?=$comment->comment_id?>, <?=$post_id?>)"
                            aria-label="Delete Comment">Delete &nbsp; </a>

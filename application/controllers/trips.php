@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pages extends EMIF_Controller {
+class Trips extends B_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -8,7 +8,7 @@ class Pages extends EMIF_Controller {
     }
 
     public function _loaddata($module, $permission, $bol=false){
-        if(!$this->mpermissions->get($this->session->userdata('role_id'), $module, $permission)){
+        if(!$this->user->check_permission($this->session->userdata('role_id'), $module, $permission)){
             if($bol) return false;
             redirect(base_url('login?error=k'));
         }
@@ -19,7 +19,7 @@ class Pages extends EMIF_Controller {
     }
 
     public function _loaddata_user($module, $permission){
-        if(!$this->mpermissions->get($this->session->userdata('role_id'), $module, $permission))
+        if(!$this->user->check_permission($this->session->userdata('role_id'), $module, $permission))
             redirect(base_url('no_permission'));
         $this->data['sites'] = $this->msites->get();
         $data['site_menus'] = $this->mmenus->get_menus('site-menu', $this->session->userdata('role_id'));
@@ -87,7 +87,7 @@ class Pages extends EMIF_Controller {
         $this->_loaddata('page', 'update');
         $data = $this->input->post(NULL);
         $stat = $this->input->post('status')=='Publish'?'published':'draft';
-        $this->mpages->set($id, array_merge($data,array(
+        $this->mpages->edit($id, array_merge($data,array(
             'commentable'=>$data['commentable'],
             'status' => $stat
         )));
