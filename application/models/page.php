@@ -1,46 +1,32 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Post extends B_Model {
+class Page extends B_Model {
 
-	public function __construct(){
+    public function __construct(){
         parent::__construct();
-        $this->set_table('posts');
+        $this->set_table('pages');
     }
 
     public function get($data){ //overrides parent method get
         if($data['where'] && !is_array($data['where']))
             $data['where'] = array('nodes.node_id' => $data['where']); // when where is not false and only a single id
-        $this->db->join('nodes', 'nodes.node_id = posts.post_id');
-        $this->db->join('post_types', 'post_types.post_type_id = posts.post_type_id');
+        $this->db->join('nodes', 'nodes.node_id = pages.page_id');
         $this->db->join('users', 'users.user_id = nodes.user_id');
-        $data['where'] = array_merge(array('module' => 'post'), $data['where']);
-        $data['select'] = "users.*, posts.*, post_types.*, nodes.*";
+        $data['where'] = array_merge(array('module' => 'page'), $data['where']);
+        $data['select'] = "users.*, pages.*, nodes.*";
         return parent::get($data);
     }
 
     public function get_many($data){ //overrides parent method get_many
-        $this->db->join('nodes', 'nodes.node_id = posts.post_id');
+        $this->db->join('nodes', 'nodes.node_id = pages.page_id');
         $this->db->join('users', 'users.user_id = nodes.user_id');
-        $this->db->join('post_types', 'post_types.post_type_id = posts.post_type_id');
-        $data['where'] = array_merge(array('module' => 'post'), $data['where']);
-        $data['select'] = "users.*, posts.*, post_types.*, nodes.*";
+        $data['where'] = array_merge(array('module' => 'page'), $data['where']);
+        $data['select'] = "users.*, pages.*, nodes.*";
         return parent::get_many($data);
     }
 
-    public function get_post_type($where){
-        if($where && !is_array($where))
-            $where = array('post_type_id' => $where); // when where is not false and only a single id
-        if($where)
-            $this->db->where($where);
-        $query = $this->db->get('post_types');
-        if($query)
-            return $query->row();
-        else
-            return false;
-    }
-
-    public function create($data){ //overrides parent method add
-        $data = array_merge($data, array('module' => 'post'));
+    public function add($data){ //overrides parent method add
+        $data = array_merge($data, array('module' => 'page'));
         $array = array(
             'user_id' => $data['user_id'],
             'module' => $data['module'],
@@ -54,19 +40,19 @@ class Post extends B_Model {
         $data = array_diff_assoc($data, $array);
         parent::add($data);
         $this->edit(
-            array('post_id'=>$data['post_id'], 'uri'=>''),
-            array('uri'=>'posts/view/'.$data['post_id']),
+            array('page_id'=>$data['page_id'], 'uri'=>''),
+            array('uri'=>'pages/view/'.$data['page_id']),
             'nodes'
         );
-        return $data['post_id'];
+        return $data['page_id'];
     }
 
     public function edit($where, $data){ //overrides parent method set
         if ($where && !is_array($where))
             $where = array('node_id' => $where);
-        if (isset($where['post_id'])) {
-            $where['node_id'] = $where['post_id'];
-            unset($where['post_id']);
+        if (isset($where['page_id'])) {
+            $where['node_id'] = $where['page_id'];
+            unset($where['page_id']);
         }
 
         $array = array(
@@ -87,19 +73,12 @@ class Post extends B_Model {
 
         if ($data != array()) {
             if (isset($where['node_id'])) {
-                $where['post_id'] = $where['node_id'];
+                $where['page_id'] = $where['node_id'];
                 unset($where['node_id']);
             }
             return parent::edit($where, $data);
         }
         return true;
     }
-
-    public function fav($id, $minus=false){
-        if($minus)
-            $this->db->edit('rateup', 'rateup-1', false);
-        else
-            $this->db->edit('rateup', 'rateup+1', false);
-        return parent::edit(array('post_id' => $id), array());
-    }
 }
+

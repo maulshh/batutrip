@@ -199,7 +199,7 @@
                 <div class="block-header">
                     <h4><span>Featured Posts</span></h4>
                 </div>
-                <?php for ($i = 0; $i <= 2; $i++) {
+                <?php $le = count($featured); for ($i = 0; $i < ($le>2?3:$le); $i++) {
                     $post = $featured[$i]?>
                     <article class="post short" id="<?=$post->permalink?>">
                         <div class="row">
@@ -231,7 +231,7 @@
                 <?php } ?>
             </div>
             <div class="article-container sharable">
-                <?php for ($i = 3; $i <= 4; $i++) {
+                <?php $le = count($featured); for ($i = 3; $i < ($le==5?5:$le); $i++) {
                     $post = $featured[$i]?>
                     <article class="post short" id="<?=$post->permalink?>">
                         <div class="row">

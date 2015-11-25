@@ -128,6 +128,7 @@
     }
 </style>
 
+<?print_r($featured)?>
 <div id="section-post" class="section section-full" style="margin-top: 0px">
     <div class="container container-post">
         <div class="col-md-9 block-post">
@@ -199,7 +200,7 @@
                 <div class="block-header">
                     <h4><span>Featured Posts</span></h4>
                 </div>
-                <?php for ($i = 0; $i <= 2; $i++) {
+                <?php $le = count($featured); for ($i = 0; $i < ($le>2?3:$le); $i++) {
                     $post = $featured[$i]?>
                     <article class="post short" id="<?=$post->permalink?>">
                         <div class="row">
@@ -231,7 +232,7 @@
                 <?php } ?>
             </div>
             <div class="article-container sharable">
-                <?php for ($i = 3; $i <= 4; $i++) {
+                <?php echo $le = count($featured); for ($i = 3; $i < ($le==5?5:$le); $i++) {
                     $post = $featured[$i]?>
                     <article class="post short" id="<?=$post->permalink?>">
                         <div class="row">
@@ -265,110 +266,3 @@
         </div>
     </div>
 </div>
-
-<?=$loginmodal?>
-
-<script>
-    $(document).ready(function () {
-        get_comments('#comments ol', <?=$post->post_id?>, 1, <?=$post->post_id?>);
-        reply_comment('#comments ol', <?=$post->post_id?>, <?=$post->post_id?>);
-    });
-
-    function get_comments(selector, parent_id, depth, post_id) {
-        $.ajax({
-            url: "<?php echo base_url('comments/get_ajax')?>/" + parent_id,
-            method: "post",
-            data: {
-                depth: depth,
-                post_id: post_id
-            },
-            success: function (result) {
-                $(selector).append(result);
-            }
-        })
-    }
-
-    function reply_comment(selector, parent_id, post_id) {
-        $.ajax({
-            url: "<?php echo base_url('comments/reply_ajax')?>",
-            method: "post",
-            data: {
-                parent_id: parent_id,
-                post_id: post_id
-            },
-            success: function (result) {
-                $('.respond').remove();
-                $(selector).first().append(result);
-            }
-        })
-    }
-
-    function reply_comment_submit(post_id) {
-        $.ajax({
-            url: "<?php echo base_url('comments/add/')?>/"+post_id,
-            method: "post",
-            data: $('#reply-form').serialize(),
-            success: function (result) {
-                if(result == 'Reply sukses'){
-                    $('#comments ol').html('');
-                    get_comments('#comments ol', <?=$post->post_id?>, 1, <?=$post->post_id?>);
-                    reply_comment('#comments', <?=$post->post_id?>, <?=$post->post_id?>);
-                } else {
-                    if(result == "harap login terlebih dahulu"){
-                        $('#showlogin').click();
-                    } else
-                    alert(result);
-                }
-            }
-        })
-    }
-
-    function edit_comment(selector, comment_id) {
-        $.ajax({
-            url: "<?php echo base_url('comments/edit_ajax')?>",
-            method: "post",
-            data: {
-                comment_id: comment_id
-            },
-            success: function (result) {
-                $(selector).html(result);
-            }
-        })
-    }
-
-    function edit_comment_submit(comment_id) {
-        $.ajax({
-            url: "<?php echo base_url('comments/edit')?>/"+comment_id,
-            method: "post",
-            data: $('#edit-form-'+comment_id).serialize(),
-            success: function (result) {
-                if(result == 'Edit sukses'){
-                    $('#comments ol').html('');
-                    get_comments('#comments ol', <?=$post->post_id?>, 1, <?=$post->post_id?>);
-                    reply_comment('#comments', <?=$post->post_id?>, <?=$post->post_id?>);
-                } else {
-                    alert(result);
-                }
-            }
-        })
-    }
-
-    function delete_comment(selector, comment_id, post_id) {
-        var r = confirm("Are you sure want to delete this comment?");
-        if(r){
-            $.ajax({
-                url: "<?php echo base_url('comments/delete_ajax')?>/"+post_id,
-                method: "post",
-                data: {
-                    comment_id: comment_id
-                },
-                success: function (result) {
-                    if(result = "Comment deleted!"){
-                        $(selector).remove();
-                    } else
-                        alert(result);
-                }
-            });
-        }
-    }
-</script>

@@ -25,19 +25,19 @@ class User extends B_Model {
             $res['site_menus'] = parent::get_many(
                 array(
                     'where' => array('module_target'=>'site-menu'),
-                    'like' => array('role_id'=>"-".$this->session->userdata('role_id')."-")
+                    'like' => array('role_id'=>"-$role-")
                 ), 'menus');
             $this->db->join('nodes', 'nodes.node_id = menus.menu_id');
             $res['menus'] = parent::get_many(
                 array(
                     'where' => array('module_target'=>'front-end'),
-                    'like' => array('role_id'=>"-".$this->session->userdata('role_id')."-")
+                    'like' => array('role_id'=>"-$role-")
                 ), 'menus');
             $this->db->join('nodes', 'nodes.node_id = menus.menu_id');
             $res['back_menus'] = parent::get_many(
                 array(
                     'where' => array('module_target'=>'admin-page'),
-                    'like' => array('role_id'=>"-".$this->session->userdata('role_id')."-")
+                    'like' => array('role_id'=>"-$role-")
                 ), 'menus');
             $res['sites'] = parent::get(
                 array(

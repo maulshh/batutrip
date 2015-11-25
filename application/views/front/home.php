@@ -174,7 +174,7 @@
                     <div id="spacer_event">
                         <div class="overlay_event">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <a href="http://www.pontianakite.com/all/event" class="normal">
+                                <a href="<?=base_url('event')?>" class="normal">
                                     <div id="more_event">
                                         Selengkapnya
                                     </div>
@@ -277,7 +277,7 @@
                         <div class="row">
                             <div id="spacer_culinary">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <a href="http://www.pontianakite.com/all/destinasi" class="normal">
+                                    <a href="<?=base_url('destination')?>" class="normal">
                                         <div id="more_destination">
                                             Selengkapnya
                                         </div>
@@ -396,7 +396,7 @@
                         <div class="row">
                             <div id="spacer_culinary">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <a href="http://www.pontianakite.com/all/kuliner" class="normal">
+                                    <a href="<?=base_url('culinary')?>" class="normal">
                                         <div id="more_culinary">
                                             Selengkapnya
                                         </div>

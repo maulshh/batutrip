@@ -4,7 +4,7 @@ class Trips extends B_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->_loadmodel(array('musers', 'mmenus', 'mpermissions', 'mpages', 'mpost_types', 'mposts', 'msites'));
+        $this->_loadmodel(array('user', 'page', 'post'));
     }
 
     public function _loaddata($module, $permission, $bol=false){
@@ -12,9 +12,6 @@ class Trips extends B_Controller {
             if($bol) return false;
             redirect(base_url('login?error=k'));
         }
-        $this->data = NULL;
-        $this->data['menus'] = $this->mmenus->get_menus('admin-page', $this->session->userdata('role_id'));
-        $this->data['sites'] = $this->msites->get();
         return true;
     }
 
@@ -31,14 +28,14 @@ class Trips extends B_Controller {
     public function index(){
         $this->_loaddata('page', 'read-all');
         $this->data['pages'] = 'Pages';
-        $this->data['all'] = $this->mpages->get_all();
+        $this->data['all'] = $this->page->get_all();
         $this->data['post_types'] = $this->mpost_types->get_all();
         $this->data['content'] = $this->load->view('pages', $this->data, true);
         $this->load->view('template', $this->data);
     }
 
     public function view($id){
-        $this->data['page'] = $this->mpages->get(array('nodes.uri'=>$id));
+        $this->data['page'] = $this->page->get(array('nodes.uri'=>$id));
         $this->data['pages'] = $this->data['page']->note;
         $this->_loaddata_user('front-end', 'read');
         if(!$this->data['page'])
@@ -73,7 +70,7 @@ class Trips extends B_Controller {
         $this->_loaddata('page', 'create');
         $array = $this->input->post(NULL);
         $stat = $this->input->post('status')=='Publish'?'published':'draft';
-        $this->mpages->add(array_merge($array,
+        $this->page->add(array_merge($array,
             array(
                 'commentable'=>$array['commentable'],
                 'user_id' => $this->session->userdata('user_id'),
@@ -87,7 +84,7 @@ class Trips extends B_Controller {
         $this->_loaddata('page', 'update');
         $data = $this->input->post(NULL);
         $stat = $this->input->post('status')=='Publish'?'published':'draft';
-        $this->mpages->edit($id, array_merge($data,array(
+        $this->page->edit($id, array_merge($data,array(
             'commentable'=>$data['commentable'],
             'status' => $stat
         )));
@@ -96,11 +93,11 @@ class Trips extends B_Controller {
 
     public function delete($id){
         $this->_loaddata('page', 'delete');
-        $this->mpages->delete(array('page_id' => $id));
+        $this->page->delete(array('page_id' => $id));
         redirect(base_url('pages'));
     }
 
     public function get_ajax($id){
-        echo json_encode($this->mpages->get($id, false, false, false, array("title, nodes.uri as uri, content, commentable, view, nodes.status as status, cover, post_category",false)));
+        echo json_encode($this->page->get($id, false, false, false, array("title, nodes.uri as uri, content, commentable, view, nodes.status as status, cover, post_category",false)));
     }
 }
