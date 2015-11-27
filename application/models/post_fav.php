@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Mcomments extends B_Model
+class Post_fav extends B_Model
 {
 
     public function __construct()
@@ -59,23 +59,5 @@ class Mcomments extends B_Model
             return parent::edit($where, $data);
         }
         return true;
-    }
-
-    public function commented($id, $minus=false)
-    {
-        if($minus)
-            $this->db->edit('comment_count', 'comment_count-1', false);
-        else
-            $this->db->edit('comment_count', 'comment_count+1', false);
-        return parent::edit(array('comment_id' => $id), array());
-    }
-
-    public function rateup($id, $minus=false)
-    {
-        if($minus)
-            $this->db->edit('rateup', 'rateup-1', false);
-        else
-            $this->db->edit('rateup', 'rateup+1', false);
-        return parent::edit(array('comment_id' => $id), array());
     }
 }

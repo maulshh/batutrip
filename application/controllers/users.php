@@ -4,24 +4,21 @@ class Users extends B_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->_loadmodel(array('musers', 'mmenus', 'mpermissions', 'msites'));
+        $this->_loadmodel(array('user'));
     }
 
     public function _loaddata($module, $permission, $bol=false){
-        if(!$this->user->check_permission($this->session->userdata('role_id'), $module, $permission)){
+        if(!($this->data = $this->user->check_permission($this->session->userdata('role_id'), $module, $permission))){
             if($bol) return false;
-            redirect(base_url('login?error=k'));
+            redirect(base_url('no_permission'));
         }
-        $this->data = NULL;
-        $this->data['menus'] = $this->mmenus->get_menus('admin-satu', $this->session->userdata('role_id'));
-        $this->data['sites'] = $this->msites->get();
-
         return true;
     }
+
     public function index(){
         $this->_loaddata('user', 'access-all');
         $this->data['pages'] = 'Users';
-        $this->data['users'] = $this->musers->get_all();
+        $this->data['users'] = $this->user->get_many(array());
         $this->data['content'] = $this->load->view('users', $this->data, true);
         $this->load->view('template', $this->data);
     }
@@ -29,19 +26,18 @@ class Users extends B_Controller {
     public function manage($role){
         $this->_loaddata('user', 'access-all');
         $this->data['pages'] = 'Users';
-        $this->data['parent_page'] = 'Civitas';
-        $this->data['users'] = $this->musers->get_many(array('roles.role_name' => $role));
+        $this->data['users'] = $this->user->get_many(array('where' => array('roles.role_name' => $role)));
         $this->data['content'] = $this->load->view('users', $this->data, true);
         $this->load->view('template', $this->data);
     }
 
     public function profile($username = false){
-        $this->_loaddata('admin-satu', 'read');
+        $this->_loaddata('admin-page', 'read');
         if($username == $this->session->userdata('username')){
             $username = false;
         }
         $this->data['pages'] = 'Profile'.($username?" $username":"");
-        $this->data['profile'] = $this->musers->get(array('username'=>$username?$username:$this->session->userdata('username')));
+        $this->data['profile'] = $this->user->get(array('where' => array('username'=>$username?$username:$this->session->userdata('username'))));
         $this->data['editable'] = !$username || $this->user->check_permission($this->session->userdata('role_id'), 'user', 'access-all');
         $this->data['content'] = $this->load->view('profile', $this->data, true);
         $this->load->view('template', $this->data);
@@ -59,7 +55,7 @@ class Users extends B_Controller {
                 $error = array('error' => $this->upload->display_errors());
                 echo "<script type='text/javascript'>alert('gagal upload foto $error[error] !');history.go(-1)</script>";
             } else {
-                $this->musers->edit(
+                $this->user->edit(
                     array('user_id'=>$this->input->post('user_id')),
                     array('pict'=>$target.$this->input->post('user_id').'.jpg')
                 );
@@ -74,10 +70,10 @@ class Users extends B_Controller {
     }
 
     public function change_pass(){
-        $user = $this->musers->get($this->input->post('user_id'));
+        $user = $this->user->get(array('where' => $this->input->post('user_id')));
         if(md5($this->input->post('old-pass')) == $user->pass){
             if($this->input->post('pass') == $this->input->post('re-pass')){
-                $this->musers->edit(
+                $this->user->edit(
                     array('user_id'=>$this->input->post('user_id')),
                     array('pass'=>md5($this->input->post('pass')))
                 );
@@ -110,7 +106,7 @@ class Users extends B_Controller {
         }
         unset($array['re-pass']);
         $array['pass'] = md5($array['pass']);
-       if($correct && $this->musers->add(array_merge($array,
+       if($correct && $this->user->add(array_merge($array,
                 array(
                     'uri' => "users/profile/".strtolower($array['username'])
                 )))){
@@ -141,10 +137,10 @@ class Users extends B_Controller {
 
     public function edit($id){
         //in a system of multidosen, only webmaster/admin can edit
-        $this->_loaddata('admin-satu', 'read');
+        $this->_loaddata('admin-page', 'read');
         if($id == $this->session->userdata('user_id')|| $this->session->userdata('role_id')<=2){
             $data = $this->input->post(NULL);
-            if($this->musers->edit($id, $data)){
+            if($this->user->edit($id, $data)){
                 $this->session->set_userdata('username', $data['username']);
                 redirect(base_url('users/profile/'.$data['username']));
             }
@@ -154,7 +150,7 @@ class Users extends B_Controller {
 
 	public function delete($id){
 		$this->_loaddata('user', 'access-all');
-		$this->musers->delete(array('user_id' => $id));
+		$this->user->delete(array('user_id' => $id));
 		redirect(base_url('users'));
 	}
 	

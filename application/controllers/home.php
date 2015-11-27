@@ -18,6 +18,12 @@ class Home extends B_Controller {
     public function index(){
         $this->_loaddata('front-end', 'read');
         $this->data['pages'] = 'Home';
+        $this->data['cul_post'] = $this->post->get_many(array('where' => array('posts.post_type_id' => '7', 'nodes.status' => 'published'),
+            'group' => 'nodes.created', 'limit' => 5));
+        $this->data['event_post'] = $this->post->get_many(array('where' => array('posts.post_type_id' => '3', 'nodes.status' => 'published'),
+            'group' => 'nodes.created', 'limit' => 4));
+        $this->data['dest_post'] = $this->post->get_many(array('where' => array('posts.post_type_id' => '2', 'nodes.status' => 'published'),
+            'group' => 'nodes.created', 'limit' => 5));
         $this->data['content'] = $this->load->view('front/home', $this->data, true);
         $this->data['footer'] = $this->load->view('front/footer', array('side_menu' => $this->data['site_menus']), true);
         $this->load->view('front/template', $this->data);

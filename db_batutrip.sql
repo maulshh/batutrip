@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`comment_id`, `parent_id`, `name`, `email`, `no_telp`, `website`, `comment_count`, `rateable`, `rateup`, `public`) VALUES
+INSERT INTO `comments` (`comment_id`, `parent_id`, `name`, `email`, `no_telp`, `website`, ``, `rateable`, `rateup`, `public`) VALUES
 (62, 34, 'Maulana', 'maulcux@gmail.com', NULL, 'http://codemastery.net', 1, 1, 0, 1),
 (63, 62, 'Maulana', 'maulcux@gmail.com', NULL, 'http://codemastery.net', 1, 1, 0, 1),
 (65, 63, 'Maulana', 'maulcux@gmail.com', NULL, '', 0, 1, 0, 1),
@@ -350,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `post_type_id`, `subtype`, `preview`, `thumbnail`, `cover`, `permalink`, `visited_last`, `visited_count`, `commentable`, `comment_count`, `rateup`, `public`, `featured`) VALUES
+INSERT INTO `posts` (`post_id`, `post_type_id`, `subtype`, `preview`, `thumbnail`, `cover`, `permalink`, `visited_last`, `visited_count`, `commentable`, coordinate, `rateup`, `public`, `featured`) VALUES
 (33, 2, '', 'In the lorem lipsum var aguer tag as wal afiat', 'http://localhost/frame_work/assets/images/news-4.jpg', 'http://localhost/frame_work/assets/images/news-4.jpg', NULL, '2015-11-15 22:47:36', 49, 0, 0, 0, 1, 1),
 (34, 3, '', 'Lorep lispusum asum susum sumsum', 'false', 'false', 'campaign', '2015-11-16 00:49:11', 126, 0, 2, 0, 1, 0),
 (35, 3, '', '', NULL, NULL, NULL, '2015-10-07 02:49:35', 1, 1, 0, 0, 1, 0),

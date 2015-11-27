@@ -48,20 +48,17 @@
                                 <textarea id="post_4" class="input-post form-control" name="preview" rows="2" cols="80"></textarea>
                             </div>
                             <input name="post_type_id" type="hidden" value="<?php echo $post_type->post_type_id ?>">
+                            <div class="form-group input-post">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon"><i class="fa fa-location-arrow"> </i> Location</span>
+                                    <input class="form-control input-sm" id="post_11" type="text" name="location"
+                                           placeholder="alamat lokasi">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <h4>Settings</h4>
-                            <div class="col-md-6">
-                                <div class="checkbox row">
-                                    <label>
-                                        <input type="checkbox" class="input-post" id="post_5" value="1"
-                                               name="commentable" <?php echo $post_type->commentable ? "checked='checked'" : "disabled='disabled'" ?>>
-                                        Commentable
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="checkbox row">
                                     <label>
                                         <input type="checkbox" class="input-post" id="post_9" value="1" name="featured">
@@ -80,17 +77,9 @@
                                 </div>
                             </div>
                             <div class="form-group" style="<?php if(!$post_type->taggable) echo 'display:none;'?>">
-                                <label>Add Tags</label>
-
-                                <div class="input-group input-group-sm">
-                                    <input type="text" id="tags" class="form-control" name="tags"
-                                           placeholder="tags, ...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-info btn-flat" onclick="submit_tags()" id="tags-btn"
-                                                disabled="disabled" type="button">Add
-                                        </button>
-                                    </span>
-                                </div>
+                                <label>Coordinate</label>
+                                <input type="text" id="post_5" class="form-control" name="coordinate"
+                                       placeholder="234,124,124,124,">
                                 <sub><i>separate by commas</i></sub>
                             </div>
                             <div id="tag"></div>
@@ -116,7 +105,7 @@
                             <div class="form-group">
                                 <label>Custom Field</label>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="maybe date or anything.." id="post_10" name="note" type="text">
+                                    <input class="form-control" placeholder="maybe date, time or anything.." id="post_10" name="note" type="text">
                                 </div>
                             </div>
                         </div>
@@ -146,8 +135,8 @@
                                 <th>Title</th>
                                 <th>Preview</th>
                                 <th>Author</th>
-                                <th>Tags</th>
-                                <th>Comments</th>
+                                <th>Location</th>
+                                <th>Coordinate</th>
                                 <th>Date</th>
                             </tr>
                             </thead>
@@ -156,8 +145,8 @@
                                 <th>Title</th>
                                 <th>Preview</th>
                                 <th>Author</th>
-                                <th>Tags</th>
-                                <th>Comments</th>
+                                <th>Location</th>
+                                <th>Coordinate</th>
                                 <th>Date</th>
                             </tr>
                             </tfoot>
@@ -180,8 +169,7 @@
         $('#data-posts').dataTable({
             "processing": true,
             "serverSide": true,
-//            "ajax": "<?php echo base_url('posts/data_posts/'.$post_type->post_type_id)?>",
-            "ajax": "<?php echo base_url('datatable/post')?>?post=<?php echo $post_type->post_type_id?>",
+            "ajax": "<?php echo base_url('posts/get_table')?>?post=<?php echo $post_type->post_type_id?>",
             "columnDefs": [
                 {
                     "render": function (data, type, row) {
@@ -229,23 +217,12 @@
                 {
                     "bSearchable": false,
                     "render": function (data) {
-                        var str = '';
-                        if (data != null) {
-                            var tags = data.split(', ');
-                            for (var i = 0; i < tags.length; i++) {
-                                str += "<a href='<?php echo base_url('posts/tags')?>/" + tags[i] + "'>" + tags[i] + "</a>, ";
-                            }
-                        }
-                        str += '-';
-                        return str;
+                        return data;
                     },
                     "targets": 3
                 },
                 {
                     "render": function (data, type, row) {
-                        if(row[11] == 0){
-                            data = "not available";
-                        }
                         return data;
                     },
                     "targets": 4
@@ -264,7 +241,7 @@
                     },
                     "targets": 5
                 },
-                {"visible": false, "targets": [6, 7, 8, 9, 10, 11]}
+                {"visible": false, "targets": [6, 7, 8, 9, 10]}
             ]
         });
         CKEDITOR.replace('post_3');
@@ -310,14 +287,14 @@
         $("#post_2").val('');
         CKEDITOR.instances.post_3.setData('');
         $("#post_4").val('');
+        $("#post_5").val('');
         $("#post_6").val('');
         angular.element($('#MainCtrl')).scope().set_thumb(1, '');
         angular.element($('#MainCtrl')).scope().set_thumb(2, '');
         angular.element($('#MainCtrl')).scope().$apply();
         $("#post_9").removeAttr('checked');
         $("#post_10").val('');
-        $("#tag").html('');
-        $("#tags-btn").attr('disabled', 'disabled');
+        $("#post_11").val('');
         if(!opened)
             $('#plus').click();
         opened = true;
@@ -334,10 +311,7 @@
                     $("#post_2").val(result.permalink);
                     CKEDITOR.instances.post_3.setData(result.content);
                     $("#post_4").val(result.preview);
-                    if(result.commentable)
-                        $("#post_5").attr('checked', 'checked');
-                    else
-                        $("#post_5").removeAttr('checked');
+                    $("#post_5").val(result.coordinate);
                     $("#post_6").val(result.public);
                     angular.element($('#MainCtrl')).scope().set_thumb(1, result.thumbnail);
                     angular.element($('#MainCtrl')).scope().set_thumb(2, result.cover);
@@ -347,20 +321,9 @@
                     else
                         $("#post_9").removeAttr('checked');
                     $("#post_10").val(result.note);
+                    $("#post_11").val(result.location);
                     $("#tags-btn").attr('onclick', 'submit_tags('+id+')');
                     $("#tags-btn").removeAttr('disabled');
-                    var str = '<b>';
-                    if (result.tags != null) {
-                        var tags = result.tags.split(', ');
-                        for (var i = 0; i < tags.length; i++) {
-                            str += tags[i] +
-                                " <a href='#' onclick='hapus_tag(" +  id + ', "' + tags[i] + '"' + ")'>" +
-                                    "<small class='badge bg-olive' style='font-size:9px'>x</small>" +
-                                "</a> ";
-                        }
-                    }
-                    str += '</b>';
-                    $("#tag").html(str);
                     $('#form-post').attr('action', '<?php echo base_url("posts/edit")?>/'+id);
                     if(!opened)
                         $('#plus').click();

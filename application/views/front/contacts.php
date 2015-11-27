@@ -26,7 +26,7 @@
                     <form id="reply-form" action="" method="post">
                         <div class="row">
                             <div class="col-md-8 site-form">
-                                <?php $user = $this->musers->get($this->session->userdata('user_id')?$this->session->userdata('user_id'):-1);?>
+                                <?php $user = $this->user->get(array('where' => $this->session->userdata('user_id')?$this->session->userdata('user_id'):-1));?>
                                 <div class="form-group">
                                     <label>Ajukan Pertanyaan?</label>
                                     <input name="title" value="" type="text" class="form-control" required="required"

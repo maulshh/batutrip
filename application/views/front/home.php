@@ -55,6 +55,34 @@
                             <h1 class="primary text-center">Top Events</h1>
                         </div>
                         <div style="margin-left:0px; margin-right:-20px">
+                            <?php foreach($event_post as $post){?>
+                            <a href="<?=base_url($post->uri)?>">
+                                <div class="col-sm-6 col-md-6 col-lg-3">
+                                    <div class='wrapper area_wrap' id="area_img_event_1">
+                                        <img
+                                            src="<?=create_url($post->thumbnail)?>"
+                                            class="top_event" id="img_event_1" alt="<?=$post->permalink?>">
+
+                                        <div class='description evn1'>
+                                            <span id="" class="col-xs-4">
+                                                <?php $tgl = explode("-", $post->note);?>
+                                                <div class="hari top_event"><?=$tgl[0]?></div>
+                                                <div class="tgl top_event"><?=$tgl[1]?></div>
+                                                <div class="bln top_event"><?=$tgl[2]?></div>
+                                            </span>
+                                            <span id="" class="col-xs-8">
+                                                <div class="judul top_event"><?=$post->title?></div>
+                                                <div class="lokasi top_event"><span
+                                                        class="fa fa-map-marker marker_icon"></span>
+                                                    <?=$post->location?>
+                                                </div>
+                                            </span>
+                                            <div style="clear:both"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <?php }?>
                             <a href="http://www.pontianakite.com/url/batu-event-project-2015">
                                 <div class="col-sm-6 col-md-6 col-lg-3">
                                     <div class='wrapper area_wrap' id="area_img_event_1">
@@ -762,7 +790,7 @@
                         kode = "all";
                     }
                     var query = "cari/" + kode + "/" + val;
-                    window.location.replace("http://www.pontianakite.com/" + query);
+                    window.location.replace("<?=base_url('posts')?>/" + query);
                 }
             }
         });
@@ -814,7 +842,7 @@
                     kode = "all";
                 }
                 var query = "cari/" + kode + "/" + val;
-                window.location.replace("http://www.pontianakite.com/" + query);
+                window.location.replace("<?=base_url('posts')?>/" + query);
             }
         });
 
