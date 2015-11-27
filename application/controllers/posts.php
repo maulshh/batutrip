@@ -34,9 +34,9 @@ class Posts extends B_Controller {
     }
 
     public function permalink($id){
+        $this->_loaddata_user('front-end', 'read');
         $this->data['post'] = $this->post->get(array('where' => array('permalink'=>$id)));
         $this->data['pages'] = $this->data['post']->title;
-        $this->_loaddata_user('front-end', 'read');
         $this->data['featured'] = $this->post->get_many(array(
             'where' => array(
                 'featured' => 1,
@@ -79,7 +79,6 @@ class Posts extends B_Controller {
             array(
                 'cover'=>create_uri($array['cover']),
                 'thumbnail'=>create_uri($array['thumbnail']),
-                'commentable'=>$array['commentable'],
                 'user_id' => $this->session->userdata['user_id'],
                 'status' => $stat,
             )
@@ -100,8 +99,7 @@ class Posts extends B_Controller {
                 $data['uri'] = 'posts/view/'.$id;
             }
             $data['status'] = $this->input->post('status')=='Publish'?'published':'draft';
-            $this->post->edit($id, array_merge($data,
-                array('commentable'=>$data['commentable'])));
+            $this->post->edit($id, $data);
             redirect(base_url($data['uri']));
         } else {
             echo "You don't have enough permission to do that!";
@@ -122,9 +120,43 @@ class Posts extends B_Controller {
     }
 
     public function get_ajax($id){
-        $this->db->join('tags', 'tags.post_id = posts.post_id', 'left');
         echo json_encode($this->post->get(array('where' => $id, 'group' => 'posts.post_id',
-            'select' => array("title, permalink, content, preview, posts.commentable, public, status,
-            GROUP_CONCAT(`tags`.`tag` SEPARATOR ', ') as tags, thumbnail, cover, featured, note"))));
+            'select' => array("title, permalink, content, preview, location, public, status,
+            coordinate, thumbnail, cover, featured, note"))));
+    }
+
+    public function get_table(){
+        $data['table'] = 'posts';
+        $data['primaryKey'] = 'post_id';
+        $data['columns'] = array(
+            array( 'db' => "`n`.`title`",
+                'dt' => 0, 'field' => 'title', 'as'=>'title'),
+            array( 'db' => '`p`.`preview`',
+                'dt' => 1, 'field' => 'preview'),
+            array( 'db' => '`u`.`username`',
+                'dt' => 2, 'field' => 'username'),
+            array( 'db' => "location",
+                'dt' => 3, 'field' => 'location'),
+            array( 'db' => '`p`.`coordinate`',
+                'dt' => 4, 'field' => 'coordinate'),
+            array( 'db' => "CONCAT_WS(',',`n`.`modified`,`n`.`created`)",
+                'dt' => 5, 'field' => 'date', 'as'=>'date'),
+            array( 'db' => "`n`.`status`",
+                'dt' => 6, 'field' => 'status'),
+            array( 'db' => "`u`.`uri`",
+                'dt' => 7, 'field' => 'uri'),
+            array( 'db' => "`n`.`uri`",
+                'dt' => 8, 'field' => 'link', 'as'=>'link'),
+            array( 'db' => "`p`.`post_id`",
+                'dt' => 9, 'field' => 'post_id'),
+            array( 'db' => "`p`.`public`",
+                'dt' => 10, 'field' => 'public')
+        );
+        $data['joinQuery'] = 'FROM `posts` AS `p` JOIN `post_types` AS `pt` ON (`p`.`post_type_id` = `pt`.`post_type_id`) JOIN `nodes` AS `n` ON (`p`.`post_id` = `n`.`node_id`) JOIN `users` AS `u` ON (`u`.`user_id` = `n`.`user_id`)';
+        if($this->_loaddata('post', 'access-all'))
+            $data['extraWhere'] = "`n`.`module` = 'post' AND `pt`.`post_type_id` = '".$_GET['post']."' GROUP BY `p`.`post_id`";
+        else
+            $data['extraWhere'] = "`n`.`module` = 'post' AND `pt`.`post_type_id` = '".$_GET['post']."' GROUP BY `p`.`post_id` AND n.user_id = ".$this->session->userdata('user_id');
+        $this->load->view('datatable/base', $data);
     }
 }
