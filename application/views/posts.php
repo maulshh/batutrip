@@ -169,7 +169,7 @@
         $('#data-posts').dataTable({
             "processing": true,
             "serverSide": true,
-            "ajax": "<?php echo base_url('posts/get_table')?>?post=<?php echo $post_type->post_type_id?>",
+            "ajax": "<?php echo base_url('posts/get_posts')?>?post=<?php echo $post_type->post_type_id?>",
             "columnDefs": [
                 {
                     "render": function (data, type, row) {

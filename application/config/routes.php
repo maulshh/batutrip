@@ -37,26 +37,17 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route["comments"] = "comments";
-$route["complaints"] = "complaints";
 $route["dashboard"] = "dashboard";
 $route["home"] = "home";
 $route["login"] = "login";
 $route["logout"] = "logout";
-$route["menus"] = "menus";
 $route["no_permission"] = "pages/view/no-permission";
 $route["not_found"] = "pages/view/not-found";
 $route["pages"] = "pages";
-$route["permissions"] = "permissions";
-$route["post_types"] = "post_types";
 $route["posts"] = "posts";
-$route["sites"] = "sites";
 $route["users"] = "users";
-$route["datatable"] = "datatable";
-//$route["emif_framework.sql"] = "emif_framework.sql";
+$route["trips"] = "trips";
 
-$route["comments/(:any)"] = "comments/$1";
-$route["complaints/(:any)"] = "complaints/$1";
 $route["dashboard/(:any)"] = "dashboard/$1";
 $route["home/(:any)"] = "home/$1";
 $route["login/(:any)"] = "login/$1";
@@ -65,12 +56,9 @@ $route["menus/(:any)"] = "menus/$1";
 $route["no_permission/(:any)"] = "pages/view/no-permission";
 $route["not_found/(:any)"] = "pages/view/not-found";
 $route["pages/(:any)"] = "pages/$1";
-$route["permissions/(:any)"] = "permissions/$1";
-$route["post_types/(:any)"] = "post_types/$1";
 $route["posts/(:any)"] = "posts/$1";
-$route["sites/(:any)"] = "sites/$1";
 $route["users/(:any)"] = "users/$1";
-$route["datatable/(:any)"] = "datatable/$1";
+$route["trips/(:any)"] = "trips/$1";
 
 $route["permalink/(:any)"] = "posts/permalink/$1";
 $route["(:any)"] = "pages/view/$1";

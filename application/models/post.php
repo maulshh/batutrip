@@ -43,7 +43,7 @@ class Post extends B_Model {
         $data = array_merge($data, array('module' => 'post'));
         $array = array(
             'user_id' => $data['user_id'],
-            'module' => $data['module'],
+            'module' => 'post',
             'uri' => isset($data['uri'])?$data['uri']:'',
             'title' => $data['title'],
             'content' => $data['content'],

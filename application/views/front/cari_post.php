@@ -127,18 +127,15 @@
         color: #008000;
     }
 </style>
-
 <div id="section-post" class="section section-full" style="margin-top: 0px">
     <div class="container container-post">
         <div class="col-md-9 block-post" style="padding:25px 60px;">
             <div class="block-header">
-                <h3><span>post terbaru</span></h3>
             </div>
             <div class="block-head">
                 <h2 class="entry-title">
-                    <?=$page->title ?>
+                    <?=$pages ?>
                 </h2>
-                <p><?=$page->content ?> </p>
             </div>
             <div class="section-more-full block-body">
                 <div class="entry-content">

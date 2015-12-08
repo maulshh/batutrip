@@ -139,28 +139,11 @@
                 <h2 class="entry-title">
                     <?php echo $post->title ?>
                 </h2>
-                <?php if($editable){?>
-<!--                    <span class="pull-right">-->
-<!--                        <a href="#" style="float: right;">delete</a>-->
-<!--                        <span style="float: right;"> &nbsp;  &nbsp; </span>-->
-<!--                        <a href="#" style="float: right;">edit</a>-->
-<!--                    </span>-->
-                <?php }?>
             </div>
             <div class="section-more-full block-body">
                 <div class="col-xs-3">
                     <div class="entry-content pull-right">
-                        <img class="img img-responsive" width="150" src="<?php echo base_url($post->pict);?>">
-                        <small>
-                        <?php if($post->commentable){?>
-                            <span class="entry-comments-link pull-right "><a href="#comments">
-                                    <?php echo $post->comment_count ?> comments</a>
-                            </span>
-                        <?php }?>
-                            <div style="width: 50px;">
-                                <a href="<?php echo base_url($post->uri) ?>"><?php echo $post->username ?></a>
-                            </div>
-                        </small>
+                        <img class="img img-responsive" width="150" src="<?php echo base_url($post->cover);?>">
                     </div>
                 </div>
                 <article class="col-md-9 post">
@@ -232,7 +215,7 @@
                 <?php } ?>
             </div>
             <div class="article-container sharable">
-                <?php echo $le = count($featured); for ($i = 3; $i < ($le==5?5:$le); $i++) {
+                <?php $le = count($featured); for ($i = 3; $i < ($le==5?5:$le); $i++) {
                     $post = $featured[$i]?>
                     <article class="post short" id="<?=$post->permalink?>">
                         <div class="row">

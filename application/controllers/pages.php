@@ -42,7 +42,6 @@ class Pages extends B_Controller {
         }
         $this->data['loginmodal'] = $this->load->view('modal/login', array('sites'=>$this->data['sites']), true);
         $this->data['content'] = $this->load->view($this->data['page']->view, $this->data, true);
-        $this->data['footer'] = $this->load->view('front/footer', array('side_menu' => $this->data['site_menus']), true);
         $this->load->view('front/template', $this->data);
     }
 

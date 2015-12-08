@@ -14,19 +14,10 @@ class Posts extends B_Controller {
         }
         return true;
     }
-
-    public function _loaddata_user($module, $permission, $bol=false){
-        if(!($this->data = $this->user->check_permission($this->session->userdata('role_id'), $module, $permission))){
-            if($bol) return false;
-            redirect(base_url('no_permission'));
-        }
-        return true;
-    }
-
 //    -----------------------------------------------------------------------------------------------
 
     public function index(){
-        $this->_loaddata_user('front-end', 'read');
+        $this->_loaddata('front-end', 'read');
         $this->data['pages'] = 'Posts';
         $this->data['all'] = $this->post->get_many(array('where' => array('public'=>1)));
         $this->data['content'] = $this->load->view('front/posts', $this->data, true);
@@ -34,7 +25,7 @@ class Posts extends B_Controller {
     }
 
     public function permalink($id){
-        $this->_loaddata_user('front-end', 'read');
+        $this->_loaddata('front-end', 'read');
         $this->data['post'] = $this->post->get(array('where' => array('permalink'=>$id)));
         $this->data['pages'] = $this->data['post']->title;
         $this->data['featured'] = $this->post->get_many(array(
@@ -43,6 +34,27 @@ class Posts extends B_Controller {
                 'nodes.status' => 'published',
                 'public' => 1
             ), 'limit' => 5)
+        );
+        if(!$this->data['post'])
+            redirect(base_url('not_found'));
+        if((!$this->data['post']->public || $this->data['post']->status != 'published') && $this->data['post']->user_id != $this->session->userdata('user_id'))
+            redirect(base_url('no_permission'));
+        $this->data['editable'] = $this->data['post']->user_id == $this->session->userdata('user_id') ||
+            $this->user->check_permission($this->session->userdata('role_id'), 'post', 'update-all-delete-all');
+        $this->data['content'] = $this->load->view($this->data['post']->view, $this->data, true);
+        $this->load->view('front/template', $this->data);
+    }
+
+    public function view($id){
+        $this->_loaddata('front-end', 'read');
+        $this->data['post'] = $this->post->get(array('where' => array('post_id'=>$id)));
+        $this->data['pages'] = $this->data['post']->title;
+        $this->data['featured'] = $this->post->get_many(array(
+                'where' => array(
+                    'featured' => 1,
+                    'nodes.status' => 'published',
+                    'public' => 1
+                ), 'limit' => 5)
         );
         if(!$this->data['post'])
             redirect(base_url('not_found'));
@@ -119,13 +131,40 @@ class Posts extends B_Controller {
         }
     }
 
+    public function cari($posttype, $query){
+        $this->_loaddata('front-end', 'read');
+        $this->data['pages'] = 'Hasil Pencarian';
+        $like = array('content' => $query);
+        if($posttype == 'all')
+            $where = array();
+        else
+            $where = array('post_type' => $posttype);
+        $this->data['posts'] = $this->post->get_many(array(
+                'where' => array_merge($where, array(
+                    'nodes.status' => 'published',
+                    'public' => 1
+                )),
+                'like'=>$like
+                )
+        );
+        $this->data['featured'] = $this->post->get_many(array(
+                'where' => array(
+                    'featured' => 1,
+                    'nodes.status' => 'published',
+                    'public' => 1
+                ), 'limit' => 5)
+        );
+        $this->data['content'] = $this->load->view('front/cari_post', $this->data, true);
+        $this->load->view('front/template', $this->data);
+    }
+
     public function get_ajax($id){
         echo json_encode($this->post->get(array('where' => $id, 'group' => 'posts.post_id',
             'select' => array("title, permalink, content, preview, location, public, status,
             coordinate, thumbnail, cover, featured, note"))));
     }
 
-    public function get_table(){
+    public function get_posts(){
         $data['table'] = 'posts';
         $data['primaryKey'] = 'post_id';
         $data['columns'] = array(

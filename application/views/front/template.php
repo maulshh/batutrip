@@ -40,19 +40,18 @@
             <?php 	}
             $depth = count($pos);
             if($menu->uri != '#'){?>
-            <li title="<?php echo $menu->title?>" <?php if($pages == $menu->content) echo 'class="active"'?>>
+            <li title="<?php echo $menu->title?>" class="<?php if($pages == $menu->content) echo 'active '?>menu pull-right">
                 <a href="<?php echo base_url($menu->uri);?>">
                     <span class="xn-text"><?php echo $menu->content?></span>
                 </a>
             </li>
         <?php 	} else {?>
             <li>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $menu->content?> <i class="fa fa-angle-down"></i></a>
+            <a href="#" class="dropdown-toggle menu pull-right" data-toggle="dropdown"><?php echo $menu->content?> <i class="fa fa-angle-down"></i></a>
             <ul class="dropdown-menu">
                 <?php 	}
                 }?>
             </ul>
-
         <div class="content">
             <?=$content?>
         </div>
@@ -92,15 +91,15 @@
                 <div class="col-lg-4 col-md-6 col-xs-12 area_footer" id="sitemap">
                     <h2 class="primary footer">Sitemap</h2>
                     <ul class="footer">
+                        <?php foreach ($site_menus as $menu){?>
                         <div class="col-md-6 col-xs-6">
-                            <?php foreach ($site_menus as $menu){?>
                             <li class="footer">
                                 <a href="<?php echo base_url($menu->uri)?>" class="footer" data-toggle="tooltip"
                                    data-placement="right" title=""
                                    data-original-title="<?php echo $menu->title?>"><?php echo $menu->content?></a>
                             </li>
-                            <?php }?>
                         </div>
+                        <?php }?>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-xs-12 normal area_footer">

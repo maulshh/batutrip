@@ -132,17 +132,15 @@
     <div class="container container-post">
         <div class="col-md-9 block-post" style="padding:25px 60px;">
             <div class="block-header">
-                <h3><span>post terbaru</span></h3>
             </div>
             <div class="block-head">
                 <h2 class="entry-title">
-                    <?=$page->title ?>
+                    Riwayat Trip
                 </h2>
-                <p><?=$page->content ?> </p>
             </div>
             <div class="section-more-full block-body">
                 <div class="entry-content">
-                    <?php foreach ($posts as $post) { ?>
+                    <?php foreach ($all as $post) { ?>
                         <div class="col-xs-12">
                             <h4>
                                 <a href="<?= base_url($post->uri) ?>"  style="padding-left:20px;"><?php echo $post->title ?></a>
@@ -153,16 +151,6 @@
                         <div class="col-xs-3">
                             <div class="entry-content pull-right">
                                 <a href="<?= base_url($post->uri) ?>"><img class="img img-responsive" width="150" src="<?php echo $post->thumbnail==""?"http://southasia.oneworld.net/ImageCatalog/no-image-icon/image":$post->thumbnail;?>"></a>
-                                <p>
-<!--                                    <a href="--><?php //echo base_url('posts/authors/'.$post->username) ?><!--">--><?php //echo $post->username ?><!--</a> | 1 hour ago-->
-                                    <?php if($post->commentable){?>
-                                    <p class="entry-meta" itemprop="text">
-                                        <span class="entry-comments-link"><a href="<?php echo base_url($post->uri) ?>/#comments">
-                                            <?php echo $post->comment_count ?> Comments</a>
-                                        </span>
-                                    </p>
-                                    <?php }?>
-                                </p>
                             </div>
                         </div>
                         <article class="col-md-9">
@@ -200,30 +188,30 @@
                     <h4><span>Featured Posts</span></h4>
                 </div>
                 <?php $le = count($featured); for ($i = 0; $i < ($le>2?3:$le); $i++) {
-                    $post = $featured[$i]?>
-                    <article class="post short" id="<?=$post->permalink?>">
+                    $trip = $featured[$i]?>
+                    <article class="post short" id="<?=$trip->permalink?>">
                         <div class="row">
                             <div class="col-md-5">
                                 <p><a data-turbo-target="post-slider"
-                                      href="<?=base_url($post->uri)?>">
+                                      href="<?=base_url($trip->uri)?>">
                                         <img class="img img-responsive"
-                                             src="<?php echo $post->thumbnail==""?"http://southasia.oneworld.net/ImageCatalog/no-image-icon/image":$post->thumbnail;?>">
+                                             src="<?php echo $trip->thumbnail==""?"http://southasia.oneworld.net/ImageCatalog/no-image-icon/image":$trip->thumbnail;?>">
                                     </a>
                                 </p>
                             </div>
                             <div class="col-md-7" style="padding-left: 0">
                                 <h5 class="article-title" style="margin-top: 0">
                                     <a data-turbo-target="post-slider"
-                                       href="<?=base_url($post->uri)?>"><?=$post->title?></a>
+                                       href="<?=base_url($trip->uri)?>"><?=$trip->title?></a>
                                 </h5>
                                 <div style="overflow: hidden; height: 36px">
-                                    <small><?=$post->preview?></small>
+                                    <small><?=$trip->preview?></small>
                                 </div>
                                 <footer>
                                     <small class="pull-right">
-                                        <a class="article-category" href="<?=base_url($post->post_type)?>"><?=$post->post_type?></a>
+                                        <a class="article-category" href="<?=base_url($trip->post_type)?>"><?=$trip->post_type?></a>
                                     </small>
-                                    <small class="article-byline"><?=$post->name?></small>
+                                    <small class="article-byline"><?=$trip->name?></small>
                                 </footer>
                             </div>
                         </div>

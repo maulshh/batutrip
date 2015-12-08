@@ -83,118 +83,6 @@
                                 </div>
                             </a>
                             <?php }?>
-                            <a href="http://www.pontianakite.com/url/batu-event-project-2015">
-                                <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <div class='wrapper area_wrap' id="area_img_event_1">
-                                        <img
-                                            src="http://www.pontianakite.com/storage-low/event/19f3cd308f1455b3fa09a282e0d496f4d9d4f495e875a2e075a1a4a6e1b9770f/331f9f9d3fb1f8b380ede763749c5b8d.jpg"
-                                            class="top_event" id="img_event_1" alt="pontianak_event_project_2015">
-
-                                        <div class='description evn1'>
-                                            <span id="" class="col-xs-4">
-                                                <div class="hari top_event">Jum</div>
-                                                <div class="tgl top_event">07</div>
-                                                <div class="bln top_event">Agu</div>
-                                            </span>
-                                            <span id="" class="col-xs-8">
-                                                <div class="judul top_event">BATU EVENT PROJECT 2015</div>
-                                                <div class="lokasi top_event"><span
-                                                        class="fa fa-map-marker marker_icon"></span>
-                                                    Rumah Adat Radakng,
-                                                    Jl.Sultan Syahrir
-                                                    Batu Jawa Timur.
-                                                </div>
-                                            </span>
-
-                                            <div style="clear:both"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="http://www.pontianakite.com/url/setetes-darah-sejuta-harapan-bersama-best-western-kota-baru">
-                                <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <div class='wrapper area_wrap' id="area_img_event_2">
-                                        <img
-                                            src="http://www.pontianakite.com/storage-low/event/642e92efb79421734881b53e1e1b18b6642e92efb79421734881b53e1e1b18b6/19f620f93d7784fbe43fce26f478d565.jpg"
-                                            class="top_event" id="img_event_2"
-                                            alt="setetes_darah_sejuta_harapan_bersama_best_western_kota_baru">
-
-                                        <div class='description evn2'>
-                                            <span id="" class="col-xs-4">
-                                                <div class="hari top_event">Sab</div>
-                                                <div class="tgl top_event">26</div>
-                                                <div class="bln top_event">Sep</div>
-                                            </span>
-                                            <span id="" class="col-xs-8">
-                                                <div class="judul top_event">Setetes Darah Sejuta Harapan Bersama BEST
-                                                    WESTERN Kota Baru
-                                                </div>
-                                                <div class="lokasi top_event"><span
-                                                        class="fa fa-map-marker marker_icon"></span>
-                                                    Jalan Sultan Abdurrachman No.72 - 74 Batu, East Java 78116,
-                                                    Indonesia
-
-                                                </div>
-                                            </span>
-
-                                            <div style="clear:both"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="http://www.pontianakite.com/url/vocal-dream">
-                                <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <div class='wrapper area_wrap' id="area_img_event_3">
-                                        <img
-                                            src="http://www.pontianakite.com/storage-low/event/642e92efb79421734881b53e1e1b18b6f457c545a9ded88f18ecee47145a72c0/8a9b5d202610738034e95f6ca4ca3922.jpg"
-                                            class="top_event" id="img_event_3" alt="vocal_dream">
-
-                                        <div class='description evn3'>
-                                            <span id="" class="col-xs-4">
-                                                <div class="hari top_event">Rab</div>
-                                                <div class="tgl top_event">30</div>
-                                                <div class="bln top_event">Sep</div>
-                                            </span>
-                                            <span id="" class="col-xs-8">
-                                                <div class="judul top_event">VOCAL DREAM</div>
-                                                <div class="lokasi top_event"><span
-                                                        class="fa fa-map-marker marker_icon"></span>
-                                                    Batu, Sintang, Sanggau, Mempawah, Singkawang, Sambas &amp;
-                                                    Ketapang.
-                                                </div>
-                                            </span>
-
-                                            <div style="clear:both"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="http://www.pontianakite.com/url/batu-cinte-satwa">
-                                <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <div class='wrapper area_wrap' id="area_img_event_4">
-                                        <img
-                                            src="http://www.pontianakite.com/storage-low/event/642e92efb79421734881b53e1e1b18b66c8349cc7260ae62e3b1396831a8398f/4f3277c253d1e1968f9018cc02b9e7b7.JPG"
-                                            class="top_event" id="img_event_4" alt="pontianak_cinte_satwa">
-
-                                        <div class='description evn4'>
-                                        <span id="" class="col-xs-4">
-                                            <div class="hari top_event">Rab</div>
-                                            <div class="tgl top_event">01</div>
-                                            <div class="bln top_event">Jul</div>
-                                        </span>
-                                        <span id="" class="col-xs-8">
-                                            <div class="judul top_event">Batu Cinte Satwa</div>
-                                            <div class="lokasi top_event"><span
-                                                    class="fa fa-map-marker marker_icon"></span>
-                                                Taman Gitananda
-                                            </div>
-                                        </span>
-
-                                            <div style="clear:both"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -214,94 +102,31 @@
                 <div class="row normal">
                     <div class="col-lg-6 normal home" id="destination">
                         <h1 class="primary text-center">Top Destination</h1>
-                        <a href="http://www.pontianakite.com/url/perpustakaan-jawa-timur">
+                        <?php foreach($dest_post as $post){?>
+                        <a href="<?=base_url($post->uri)?>">
                             <div class="col-sm-6 col-md-6 col-lg-12 ds1" id="area_destination">
                                 <div class="normal col-lg-6 col-md-12 image_dest" id="area_img_dest_1">
                                     <img
-                                        src="http://www.pontianakite.com/storage-low/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg"
-                                        class="top_destination" id="img_dest_1" alt="perpustakaan_kalimantan_barat">
+                                        src="<?=create_url($post->thumbnail)?>"
+                                        class="top_destination" id="img_dest_1" alt="<?=$post->permalink//strtolower(str_replace(' ', '-', $post->title))?>">
                                 </div>
                                 <div class="col-lg-6 col-md-12 text_dest" id="text_dest_1">
-                                    <h2 class="title_destination">Perpustakaan Jawa Timur</h2>
+                                    <h2 class="title_destination"><?=$post->title?></h2>
 
                                     <div class="lokasi top_destination home">
                                         <h3 class="home">
                                             <span class="fa fa-map-marker marker_icon"></span>
-                                            Jl. Letjen Sutoyo No. 6 Batu
+                                            <?=$post->location?>
                                         </h3>
                                     </div>
                                     <p class="deskripsi destination">
 
-                                    <p>Jam Layanan dari 08.00 s.d 22.00 Wib</p>
+                                    <?=$post->preview?>
                                     </p>
                                 </div>
                             </div>
                         </a>
-                        <a href="http://www.pontianakite.com/url/keraton-kadriyah">
-                            <div class="col-sm-6 col-md-6 col-lg-12 ds2" id="area_destination">
-                                <div class="normal col-lg-6 col-md-12 image_dest" id="area_img_dest_2">
-                                    <img
-                                        src="http://www.pontianakite.com/storage-low/destinasi/c81e728d9d4c2f636f067f89cc14862ca87ff679a2f3e71d9181a67b7542122c/fcd4daef9cf6cec58358fe5b89ae3470.jpg"
-                                        class="top_destination" id="img_dest_2" alt="keraton_kadriyah">
-                                </div>
-                                <div class="col-lg-6 col-md-12 text_dest" id="text_dest_2">
-                                    <h2 class="title_destination">Keraton Kadriyah</h2>
-
-                                    <div class="lokasi top_destination home">
-                                        <h3 class="home">
-                                            <span class="fa fa-map-marker marker_icon"></span>
-                                            Jl.Tanjung Raya Kampung Beting, Kelurahan Dalam Bugis
-                                        </h3>
-                                    </div>
-                                    <p class="deskripsi destination">Keraton Kadriyah adalah Keraton Batu yang ada pada
-                                        tempo dulu dijadikan Pusat Pemerintahan Kesultanan Batu.</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="http://www.pontianakite.com/url/masjid-al-jihad-batu">
-                            <div class="col-sm-6 col-md-6 col-lg-12 ds3" id="area_destination">
-                                <div class="normal col-lg-6 col-md-12 image_dest" id="area_img_dest_3">
-                                    <img
-                                        src="http://www.pontianakite.com/storage-low/destinasi/3416a75f4cea9109507cacd8e2f2aefcd3d9446802a44259755d38e6d163e820/fd9059ef9e5da8250819f65e1e436736.jpg"
-                                        class="top_destination" id="img_dest_3" alt="masjid_al_jihad_pontianak">
-                                </div>
-                                <div class="col-lg-6 col-md-12 text_dest" id="text_dest_3">
-                                    <h2 class="title_destination">Masjid Al Jihad Batu</h2>
-
-                                    <div class="lokasi top_destination home">
-                                        <h3 class="home">
-                                            <span class="fa fa-map-marker marker_icon"></span>
-                                            Jl.Sumatra / Jl.Moh. Sohor
-                                        </h3>
-                                    </div>
-                                    <p class="deskripsi destination">Masjid Al-Jihad adalah satu di antara masjid yang bercorak
-                                        Melayu yang terdapat di Kota Batu. Masjid ini terletak di sudut pertemuan Jalan
-                                        Sultan Abdurahman dan Jala...</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="http://www.pontianakite.com/url/pusat-oleh-oleh-psp">
-                            <div class="col-sm-6 col-md-6 col-lg-12 ds4" id="area_destination">
-                                <div class="normal col-lg-6 col-md-12 image_dest" id="area_img_dest_4">
-                                    <img
-                                        src="http://www.pontianakite.com/storage-low/destinasi/3416a75f4cea9109507cacd8e2f2aefc45c48cce2e2d7fbdea1afc51c7c6ad26/151e28fde175906f3e79c0519b0c7083.jpg"
-                                        class="top_destination" id="img_dest_4" alt="pusat_oleh_oleh_psp">
-                                </div>
-                                <div class="col-lg-6 col-md-12 text_dest" id="text_dest_4">
-                                    <h2 class="title_destination">Pusat Oleh-Oleh PSP</h2>
-
-                                    <div class="lokasi top_destination home">
-                                        <h3 class="home">
-                                            <span class="fa fa-map-marker marker_icon"></span>
-                                            Jl.Patimura
-                                        </h3>
-                                    </div>
-                                    <p class="deskripsi destination">Di kawasan ini terdapat lebih dari 30 kios yang menjual
-                                        berbagai jenis aneka makanan khas, aksesoris, dan cinderamata.</p>
-                                </div>
-                            </div>
-                        </a>
-
+                        <?php }?>
                         <div class="row">
                             <div id="spacer_culinary">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -316,111 +141,32 @@
                     </div>
                     <div class="col-lg-6 normal home" id="culinary">
                         <h1 class="primary text-center">Top Culinary</h1>
-                        <a href="http://www.pontianakite.com/url/nasi-goreng-seafood-artomoro">
+                        <?php foreach($cul_post as $post){?>
+                        <a href="<?=base_url($post->uri)?>">
                             <div class="col-md-6 col-lg-12 col-sm-6 cl1" id="area_culinary">
                                 <div class="normal col-lg-6 image_culin" id="area_img_culin_1">
                                     <img
-                                        src="http://www.pontianakite.com/storage-low/kuliner/a2557a7b2e94197ff767970b67041697c20ad4d76fe97759aa27a0c99bff6710/332986e7b9ac93d69b40e3cf99472fb2.jpg"
-                                        class="top_culinary" id="img_culin_1" alt="nasi_goreng_seafood_artomoro">
+                                        src="<?=create_uri($post->thumbnail)?>"
+                                        class="top_culinary" id="img_culin_1" alt="<?=$post->permalink//strtolower(str_replace(' ', '-', $post->title))?>">
                                 </div>
                                 <div class="col-md-12 col-lg-6 text_culin" id="text_culin_1">
-                                    <h2 class="title_culinary">Nasi Goreng Seafood Artomoro</h2>
+                                    <h2 class="title_culinary"><?=$post->title?></h2>
 
                                     <div class="col-xs-12 col-md-12 col-lg-12 harga home">
                                         <h3>
-                                            Rp. 11.000
-                                            -
-                                            Rp. 15.000
+                                            <?=$post->note?>
                                         </h3>
                                     </div>
                                     <div class="col-md-12 col-lg-12 lokasi top_destination culinary">
                                         <h3>
                                             <span class="fa fa-map-marker marker_icon home"></span>
-                                            Jl. Merdeka Barat, didepan Kampus STMIK
+                                            <?=$post->location?>
                                         </h3>
                                     </div>
                                 </div>
                             </div>
                         </a>
-                        <a href="http://www.pontianakite.com/url/mie-pangsit-warung-joko">
-                            <div class="col-md-6 col-lg-12 col-sm-6 cl2" id="area_culinary">
-                                <div class="normal col-lg-6 image_culin" id="area_img_culin_2">
-                                    <img
-                                        src="http://www.pontianakite.com/storage-low/kuliner/a2557a7b2e94197ff767970b670416976512bd43d9caa6e02c990b0a82652dca/b3e0b6455a031690825a60ff1b322790.jpg"
-                                        class="top_culinary" id="img_culin_2" alt="mie_pangsit_warung_joko">
-                                </div>
-                                <div class="col-md-12 col-lg-6 text_culin" id="text_culin_2">
-                                    <h2 class="title_culinary">Mie Pangsit Warung Joko</h2>
-
-                                    <div class="col-xs-12 col-md-12 col-lg-12 harga home">
-                                        <h3>
-                                            Rp. 12.000
-                                            -
-                                            Rp. 15.000
-                                        </h3>
-                                    </div>
-                                    <div class="col-md-12 col-lg-12 lokasi top_destination culinary">
-                                        <h3>
-                                            <span class="fa fa-map-marker marker_icon home"></span>
-                                            Jl. H. Abbas 2, perempatan ditengah Jl. Setia Budi, didepan Datacom
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="http://www.pontianakite.com/url/floating-barbeque">
-                            <div class="col-md-6 col-lg-12 col-sm-6 cl3" id="area_culinary">
-                                <div class="normal col-lg-6 image_culin" id="area_img_culin_3">
-                                    <img
-                                        src="http://www.pontianakite.com/storage-low/kuliner/c4ca4238a0b923820dcc509a6f75849b1f0e3dad99908345f7439f8ffabdffc4/678120c0425419d9ab5194828ad08f7f.jpg"
-                                        class="top_culinary" id="img_culin_3" alt="floating_barbeque">
-                                </div>
-                                <div class="col-md-12 col-lg-6 text_culin" id="text_culin_3">
-                                    <h2 class="title_culinary">Floating Barbeque</h2>
-
-                                    <div class="col-xs-12 col-md-12 col-lg-12 harga home">
-                                        <h3>
-                                            Rp. 85.000
-                                        </h3>
-                                    </div>
-                                    <div class="col-md-12 col-lg-12 lokasi top_destination culinary">
-                                        <h3>
-                                            <span class="fa fa-map-marker marker_icon home"></span>
-                                            Hotel best western kota baru, jl. sultan syahrir.
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="http://www.pontianakite.com/url/bakso-pak-nanok">
-                            <div class="col-md-6 col-lg-12 col-sm-6 cl4" id="area_culinary">
-                                <div class="normal col-lg-6 image_culin" id="area_img_culin_4">
-                                    <img
-                                        src="http://www.pontianakite.com/storage-low/kuliner/a2557a7b2e94197ff767970b67041697c51ce410c124a10e0db5e4b97fc2af39/523cc3a4721da059d7c382429785ff96.jpg"
-                                        class="top_culinary" id="img_culin_4" alt="bakso_pak_nanok">
-                                </div>
-                                <div class="col-md-12 col-lg-6 text_culin" id="text_culin_4">
-                                    <h2 class="title_culinary">Bakso Pak Nanok</h2>
-
-                                    <div class="col-xs-12 col-md-12 col-lg-12 harga home">
-                                        <h3>
-                                            Rp. 12.000
-                                            -
-                                            Rp. 13.000
-                                        </h3>
-                                    </div>
-                                    <div class="col-md-12 col-lg-12 lokasi top_destination culinary">
-                                        <h3>
-                                            <span class="fa fa-map-marker marker_icon home"></span>
-                                            Jl. Tabrani Ahmad, samping Kantor Camat
-                                            Jl. H. Rais A. Rahman, Komp. Pasar Dahlia
-                                            Jl. Husein Hamzah
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
+                        <?php }?>
                         <div class="row">
                             <div id="spacer_culinary">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -815,7 +561,7 @@
                 kode = "all";
             }
             var query = "cari/" + kode + "/" + val;
-            window.location.replace("http://www.pontianakite.com/" + query);
+            window.location.replace("<?=base_url('posts')?>/" + query);
         });
 
         $("#bt_cari").click(function () {

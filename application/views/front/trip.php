@@ -136,40 +136,12 @@
             </div>
             <div class="block-head">
                 <h2 class="entry-title">
-                    <?=$page->title ?>
+                    <?=$trip->title ?>
                 </h2>
-                <p><?=$page->content ?> </p>
+                <p><?=$trip->content ?> </p>
             </div>
             <div class="section-more-full block-body">
                 <div class="entry-content">
-                    <?php foreach ($posts as $post) { ?>
-                        <div class="col-xs-12">
-                            <h4>
-                                <a href="<?= base_url($post->uri) ?>"  style="padding-left:20px;"><?php echo $post->title ?></a>
-                                <small class="pull-right"><b><?php $tgl = explode("-", substr($post->created, 0, 10));
-                                        echo date('d M Y', mktime(0,0,0,$tgl[2],$tgl[0],$tgl[1]))?></b></small>
-                            </h4>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="entry-content pull-right">
-                                <a href="<?= base_url($post->uri) ?>"><img class="img img-responsive" width="150" src="<?php echo $post->thumbnail==""?"http://southasia.oneworld.net/ImageCatalog/no-image-icon/image":$post->thumbnail;?>"></a>
-                                <p>
-<!--                                    <a href="--><?php //echo base_url('posts/authors/'.$post->username) ?><!--">--><?php //echo $post->username ?><!--</a> | 1 hour ago-->
-                                    <?php if($post->commentable){?>
-                                    <p class="entry-meta" itemprop="text">
-                                        <span class="entry-comments-link"><a href="<?php echo base_url($post->uri) ?>/#comments">
-                                            <?php echo $post->comment_count ?> Comments</a>
-                                        </span>
-                                    </p>
-                                    <?php }?>
-                                </p>
-                            </div>
-                        </div>
-                        <article class="col-md-9">
-                            <p><?php echo $post->preview ?><br><a href="<?= base_url($post->uri) ?>">read more</a></p>
-                        </article>
-                        <hr>
-                    <?php } ?>
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ class Trip extends B_Model {
         $data = array_merge($data, array('module' => 'trip'));
         $array = array(
             'user_id' => $data['user_id'],
-            'module' => $data['module'],
+            'module' => 'trip',
             'uri' => isset($data['uri'])?$data['uri']:'',
             'title' => $data['title'],
             'content' => $data['content'],
@@ -51,7 +51,6 @@ class Trip extends B_Model {
             $where['node_id'] = $where['trip_id'];
             unset($where['trip_id']);
         }
-
         $array = array(
             'node_id' => '',
             'user_id' => '',
@@ -78,12 +77,12 @@ class Trip extends B_Model {
         return true;
     }
 
-    public function add_post(){
-
+    public function add_post($data){
+        parent::add($data, 'detail_trip');
     }
 
-    public function delete_post(){
-
+    public function delete_post($where){
+        parent::delete($where, 'detail_trip');
     }
 }
 
