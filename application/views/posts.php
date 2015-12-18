@@ -47,6 +47,18 @@
                                 <label>Preview Text</label>
                                 <textarea id="post_4" class="input-post form-control" name="preview" rows="2" cols="80"></textarea>
                             </div>
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <textarea id="post_12" class="input-post form-control" name="harga" rows="2" cols="80"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Review</label>
+                                <textarea id="post_13" class="input-post form-control" name="review" rows="2" cols="80"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Trivia</label>
+                                <textarea id="post_14" class="input-post form-control" name="trivia" rows="2" cols="80"></textarea>
+                            </div>
                             <input name="post_type_id" type="hidden" value="<?php echo $post_type->post_type_id ?>">
                             <div class="form-group input-post">
                                 <div class="input-group input-group-sm">
@@ -58,6 +70,10 @@
                         </div>
                         <div class="col-md-3">
                             <h4>Settings</h4>
+                            <div class="form-group" style="<?php if(!$post_type->taggable) echo 'display:none;'?>">
+                                <label>Subtitle</label>
+                                <input type="text" id="post_17" class="form-control input-sm" name="subtitle">
+                            </div>
                             <div class="col-md-12">
                                 <div class="checkbox row">
                                     <label>
@@ -79,10 +95,9 @@
                             <div class="form-group" style="<?php if(!$post_type->taggable) echo 'display:none;'?>">
                                 <label>Coordinate</label>
                                 <input type="text" id="post_5" class="form-control" name="coordinate"
-                                       placeholder="234,124,124,124,">
+                                       placeholder="234.32423,124.23423">
                                 <sub><i>separate by commas</i></sub>
                             </div>
-                            <div id="tag"></div>
 
                             <div class="form-group">
                                 <label>Thumbnail</label>
@@ -101,6 +116,14 @@
                                     <input class="form-control input-post" placeholder="http://photo.com/image.jpg" ng-model="cover">
                                     <input id="post_8" name="cover" type="hidden" value="{{cover}}">
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Detail</label>
+                                <textarea id="post_15" class="input-post form-control" name="review" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Akomodasi</label>
+                                <textarea id="post_16" class="input-post form-control" name="review" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Custom Field</label>
@@ -295,9 +318,16 @@
         $("#post_9").removeAttr('checked');
         $("#post_10").val('');
         $("#post_11").val('');
+        $("#post_12").val('');
+        $("#post_13").val('');
+        $("#post_14").val('');
+        $("#post_15").val('');
+        $("#post_16").val('');
+        $("#post_17").val('');
         if(!opened)
             $('#plus').click();
         opened = true;
+        initialize_map();
     }
 
     function edit_post(id){
@@ -322,6 +352,12 @@
                         $("#post_9").removeAttr('checked');
                     $("#post_10").val(result.note);
                     $("#post_11").val(result.location);
+                    $("#post_12").val(result.harga);
+                    $("#post_13").val(result.review);
+                    $("#post_14").val(result.trivia);
+                    $("#post_15").val(result.detail);
+                    $("#post_16").val(result.akomodasi);
+                    $("#post_17").val(result.subtitle);
                     $("#tags-btn").attr('onclick', 'submit_tags('+id+')');
                     $("#tags-btn").removeAttr('disabled');
                     $('#form-post').attr('action', '<?php echo base_url("posts/edit")?>/'+id);
@@ -426,4 +462,42 @@
             this.saveas = val;
         };
     });
+</script>
+<script type="text/javascript">var centreGot = false;</script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>'
+<script type="text/javascript">
+//    var map; // Global declaration of the map
+//    var lat_longs_map = new Array();
+//    var markers_map = new Array();
+//    var iw_map;
+//    iw_map = new google.maps.InfoWindow();
+//    function initialize_map() {
+//        var myLatlng = new google.maps.LatLng(-0.025824, 109.337739);
+//        var myOptions = {
+//            zoom: 15,
+//            center: myLatlng,
+//            mapTypeId: google.maps.MapTypeId.ROADMAP
+//        }
+//        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+//        google.maps.event.addListener(map, "bounds_changed", function (event) {
+//            if (!centreGot) {
+//                var mapCentre = map.getCenter();
+//                marker_0.setOptions({
+//                    position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+//                });
+//            }
+//            centreGot = true;
+//        });
+//        var markerOptions = {
+//            map: map
+//        };
+//        marker_0 = createMarker_map(markerOptions);
+//    }
+//    function createMarker_map(markerOptions) {
+//        var marker = new google.maps.Marker(markerOptions);
+//        markers_map.push(marker);
+//        lat_longs_map.push(marker.getPosition());
+//        return marker;
+//    }
+//    google.maps.event.addDomListener(window, "load", initialize_map);
 </script>

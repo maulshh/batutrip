@@ -7,7 +7,7 @@ abstract class B_Controller extends CI_Controller{
         $this->load->database();
         $role = $this->session->userdata('role_id');
         if(empty($role)){
-        	$this->session->set_userdata(array('role_id' => '4', 'trip_id' => 0));
+        	$this->session->set_userdata(array('role_id' => '4', 'trip_id' => 0, 'user_id' => -1));
         }
         date_default_timezone_set("Asia/Jakarta");
     }

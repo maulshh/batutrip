@@ -13,7 +13,8 @@ class Trip extends B_Model {
         $this->db->join('nodes', 'nodes.node_id = trips.trip_id');
         $this->db->join('users', 'users.user_id = nodes.user_id');
         $data['where'] = array_merge(array('module' => 'trip'), $data['where']);
-        return parent::get($data);}
+        return parent::get($data);
+    }
 
     public function get_many($data){ //overrides parent method get_many
         $this->db->join('nodes', 'nodes.node_id = trips.trip_id');

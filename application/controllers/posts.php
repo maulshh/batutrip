@@ -47,7 +47,7 @@ class Posts extends B_Controller {
 
     public function view($id){
         $this->_loaddata('front-end', 'read');
-        $this->data['post'] = $this->post->get(array('where' => array('post_id'=>$id)));
+        $this->data['post'] = $this->post->get(array('where' => array('posts.post_id'=>$id)));
         $this->data['pages'] = $this->data['post']->title;
         $this->data['featured'] = $this->post->get_many(array(
                 'where' => array(
@@ -81,6 +81,7 @@ class Posts extends B_Controller {
     }
 
     public function add(){
+        $this->_loaddata('post', 'create');
         $array = $this->input->post(NULL);
         if($array['permalink'] != '')
             $array['uri'] = 'permalink/'.$array['permalink'];
@@ -160,8 +161,14 @@ class Posts extends B_Controller {
 
     public function get_ajax($id){
         echo json_encode($this->post->get(array('where' => $id, 'group' => 'posts.post_id',
-            'select' => array("title, permalink, content, preview, location, public, status,
-            coordinate, thumbnail, cover, featured, note"))));
+            'select' => array("nodes.*, posts.*"))));
+    }
+
+    public function favs($id){
+        if(!$this->post->fav($id)){
+            $this->post->unfav($id);
+        }
+        redirect(base_url('posts/view/'.$id));
     }
 
     public function get_posts(){

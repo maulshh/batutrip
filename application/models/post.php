@@ -13,8 +13,10 @@ class Post extends B_Model {
         $this->db->join('nodes', 'nodes.node_id = posts.post_id');
         $this->db->join('post_types', 'post_types.post_type_id = posts.post_type_id');
         $this->db->join('users', 'users.user_id = nodes.user_id');
+        $this->db->join('post_fav', "posts.post_id = post_fav.post_id AND post_fav.user_id = '".$this->session->userdata('user_id')."'", 'left');
+        $this->db->join('detail_trip', "posts.post_id = detail_trip.post_id AND detail_trip.trip_id = '".$this->session->userdata('trip_id')."'", 'left');
         $data['where'] = array_merge(array('module' => 'post'), $data['where']);
-        $data['select'] = "users.*, posts.*, post_types.*, nodes.*";
+        $data['select'] = "users.*, posts.*, post_types.*, nodes.*, date, number";
         return parent::get($data);
     }
 
@@ -95,11 +97,24 @@ class Post extends B_Model {
         return true;
     }
 
-    public function fav($id, $minus=false){
-        if($minus)
-            $this->db->edit('rateup', 'rateup-1', false);
-        else
-            $this->db->edit('rateup', 'rateup+1', false);
-        return parent::edit(array('post_id' => $id), array());
+    public function fav($id){
+        if(!parent::get(array('where' => array(
+            'post_id' => $id,
+            'user_id' => $this->session->userdata('user_id'))
+        ), 'post_fav')){
+            parent::add(array(
+                'post_id' => $id,
+                'user_id' => $this->session->userdata('user_id')
+            ), 'post_fav');
+            return true;
+        }
+        return false;
+    }
+
+    public function unfav($id){
+        parent::delete(array(
+            'post_id' => $id,
+            'user_id' => $this->session->userdata('user_id')
+        ), 'post_fav');
     }
 }

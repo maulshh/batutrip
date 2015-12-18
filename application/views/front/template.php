@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" id="theme" href="<?= base_url('ui/public') ?>/css/_home.css"/>
     <link rel="stylesheet" type="text/css" id="theme" href="<?= base_url('ui/public') ?>/css/_kuliner.css"/>
     <link rel="stylesheet" type="text/css" id="theme" href="<?= base_url('ui/public') ?>/css/_event.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="<?= base_url('assets') ?>/css/style.css"/>
     <link rel="stylesheet" type="text/css" id="theme" href="<?= base_url('ui/public') ?>/css/_destinasi.css"/>
     <link rel="stylesheet" type="text/css" id="theme" href="<?= base_url('ui/public') ?>/css/_pencarian.css"/>
     <script type="text/javascript" src="<?= base_url('ui/public') ?>/js/plugins/jquery/jquery.min.js"></script>
@@ -31,7 +32,6 @@
             </li>
             <?php
             $depth = 1;
-            //print_r($menus);
             foreach ($menus as $menu){
             $pos = explode('-', $menu->position);
             if($depth > count($pos)){?>

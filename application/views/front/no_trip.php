@@ -5,29 +5,12 @@
             </div>
             <div class="block-head">
                 <h2 class="entry-title">
-                    Riwayat Trip
+                    My Trip
                 </h2>
             </div>
             <div class="section-more-full block-body">
                 <div class="entry-content">
-                    <?php foreach ($all as $post) { ?>
-                        <div class="col-xs-12">
-                            <h4>
-                                <a href="<?= base_url($post->uri) ?>"  style="padding-left:20px;"><?php echo $post->title ?></a>
-                                <small class="pull-right"><b><?php $tgl = explode("-", substr($post->created, 0, 10));
-                                        echo date('d M Y', mktime(0,0,0,$tgl[2],$tgl[0],$tgl[1]))?></b></small>
-                            </h4>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="entry-content pull-right">
-                                <a href="<?= base_url($post->uri) ?>"><img class="img img-responsive" width="150" src="<?php echo $post->thumbnail==""?"http://southasia.oneworld.net/ImageCatalog/no-image-icon/image":$post->thumbnail;?>"></a>
-                            </div>
-                        </div>
-                        <article class="col-md-9">
-                            <p><?php echo $post->preview ?><br><a href="<?= base_url($post->uri) ?>">read more</a></p>
-                        </article>
-                        <hr>
-                    <?php } ?>
+                    <p>Anda belum memiliki rencana perjalanan, silahkan menambahkan destinasi untuk merencanakan trip anda!</p>
                 </div>
             </div>
         </div>
