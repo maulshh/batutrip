@@ -39,7 +39,6 @@ class Login extends B_Controller {
         $usr = $this->input->post('email');
         $pass = $this->input->post('pass');
         $query = $this->user->auth($usr, $pass);
-//        print_r($query);
         if($query) {
             $arryauser = array(
                 'user_id'=>$query->user_id,
@@ -53,9 +52,8 @@ class Login extends B_Controller {
                 echo "Anda telah masuk kedalam sistem<br><br>";
                 return;
             }
-            redirect(base_url('dashboard'));
+            redirect(base_url());
         }
-//        print_r($arryauser);
         if($bol){
             echo "<code>Password atau username tidak valid.</code><br><br>";
             return;

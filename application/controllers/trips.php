@@ -56,6 +56,7 @@ class Trips extends B_Controller {
                 $this->data['content'] = $this->load->view('front/no_trip', $this->data, true);
             }
         } else {
+            $this->data['trip_id'] = $id;
             $this->data['trip'] = $this->trip->get(array(
                 'where' => $id
             ));
@@ -103,17 +104,22 @@ class Trips extends B_Controller {
     }
 
     public function checkout($id){
-        $this->_loaddata('trip', 'update');
-        $data = $this->input->post(NULL);
-        $stat = $this->input->post('status')=='Publish'?'published':'saved';
-        $this->trip->edit($id, array_merge($data,array(
-            'status' => $stat
-        )));
-        redirect(base_url('trips/view/'.$id));
+        if(!$this->_loaddata('trip', 'update', true)){
+            echo "harap login terlebih dahulu";
+        } else {
+            $data = $this->input->post(NULL);
+            $stat = $this->input->post('status')=='Publish'?'published':'saved';
+            $this->trip->edit($id, array_merge($data,array(
+                'status' => $stat,
+                'user_id' => $this->session->userdata('user_id'),
+            )));
+            $this->session->set_userdata(array('trip_id' => 0));
+            echo "Reply sukses";
+        }
     }
 
     public function delete_post($id){
-        $this->_loaddata('trip', 'delete');
+        $this->_loaddata('front-end', 'read');
         $this->trip->delete_post(array('post_id' => $id, 'trip_id' => $this->session->userdata('trip_id')));
         redirect(base_url('trips/view'));
     }

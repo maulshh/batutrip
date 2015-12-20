@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 08, 2015 at 04:11 AM
+-- Generation Time: Dec 20, 2015 at 01:01 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.4.4
 
@@ -28,11 +28,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `detail_trip` (
   `trip_id` int(11) NOT NULL,
-  `post_id` int(11) DEFAULT NULL,
+  `post_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
-  PRIMARY KEY (`trip_id`),
-  KEY `post_id` (`post_id`)
+  PRIMARY KEY (`trip_id`,`post_id`),
+  KEY `post_id` (`post_id`),
+  KEY `trip_id` (`trip_id`),
+  KEY `post_id_2` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_trip`
+--
+
+INSERT INTO `detail_trip` (`trip_id`, `post_id`, `number`) VALUES
+(140, 41, 0),
+(140, 57, 0),
+(140, 106, 0),
+(141, 33, 0);
 
 -- --------------------------------------------------------
 
@@ -63,14 +75,12 @@ INSERT INTO `menus` (`menu_id`, `role_id`, `position`, `module_target`) VALUES
 (120, '-1-2-3-', '1', 'front-end'),
 (49, '-4-', '1', 'side-front'),
 (100, '-4-1-2-3-', '1', 'site-menu'),
-(130, '-1-2-3-4-', '1.1', 'site-menu'),
 (50, '-1-2-3-', '2', 'side-front'),
 (101, '-4-1-2-3-', '2', 'site-menu'),
 (110, '-4-', '2.1', 'front-end'),
 (131, '-1-2-3-4-', '2.1', 'site-menu'),
 (137, '-1-2-3-4-', '2.3', 'front-end'),
 (13, '-1-2-', '3', 'admin-page'),
-(11, '-4-1-3-2-', '3', 'front-end'),
 (102, '-4-1-2-3-', '3', 'site-menu'),
 (14, '-1-2-', '3-1', 'admin-page'),
 (46, '-1-2-', '3-2', 'admin-page'),
@@ -110,14 +120,13 @@ CREATE TABLE IF NOT EXISTS `nodes` (
   `status` varchar(30) NOT NULL,
   PRIMARY KEY (`node_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=139 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=142 ;
 
 --
 -- Dumping data for table `nodes`
 --
 
 INSERT INTO `nodes` (`node_id`, `user_id`, `module`, `created`, `modified`, `uri`, `title`, `content`, `note`, `status`) VALUES
-(11, 1, 'menu', '2015-05-01 14:30:41', '2015-12-06 08:33:22', 'hubungi-kami', 'Hubungi Kami', 'Kontak', '', '1'),
 (12, 1, 'menu', '2015-05-01 14:38:58', '2015-10-11 08:22:12', 'dashboard', 'Halaman Awal', 'Dashboard', '', '1'),
 (13, 1, 'menu', '2015-05-01 15:34:22', '2015-05-13 19:57:23', '#', 'Kelola Posting', 'Posts', '', '1'),
 (14, 1, 'menu', '2015-05-01 15:35:18', '2015-11-25 03:42:41', 'posts/manage/destinations', 'Destinations posts', 'Destinations', '', '1'),
@@ -205,7 +214,6 @@ INSERT INTO `nodes` (`node_id`, `user_id`, `module`, `created`, `modified`, `uri
 (127, 1, 'comment', '2015-10-11 08:12:34', '2015-10-11 08:12:35', 'contact-us#comment-127', 'Hemm sesuatu', 'Apakah ini verifiable?', '', 'unverified'),
 (128, 1, 'comment', '2015-10-14 09:59:14', '2015-10-14 09:59:14', 'permalink/daftar-ulang-2015#comment-128', '', 'sfsdf', '', 'published'),
 (129, 1, 'menu', '2015-12-06 08:14:15', NULL, 'ketentuan', 'ketentuan', 'Ketentuan', '', '1'),
-(130, 1, 'menu', '2015-12-06 08:15:06', '2015-12-06 08:19:39', 'kontak', 'kontak kami', 'Kontak Kami', '', '1'),
 (131, 1, 'menu', '2015-12-06 08:21:55', '2015-12-06 08:23:06', 'oauth/twitter', 'login dengan twitter', 'Twitter', '', '1'),
 (132, 1, 'menu', '2015-12-06 08:22:54', NULL, 'oauth/facebook', 'login dengan facebook', 'Facebook', '', '1'),
 (133, 1, 'menu', '2015-12-06 08:23:46', '2015-12-06 08:24:56', 'oauth/google', 'login dengan Google+', 'Google+', '', '1'),
@@ -213,7 +221,9 @@ INSERT INTO `nodes` (`node_id`, `user_id`, `module`, `created`, `modified`, `uri
 (135, 1, 'menu', '2015-12-06 08:25:57', NULL, 'https://instagram.com/batutrip', 'akun instagram batutrip', 'instagram/batutrip', '', '1'),
 (136, 1, 'menu', '2015-12-06 08:26:40', '2015-12-06 08:26:47', 'https://facebook.com/batutrip', 'akun facebook batutrip', 'fb/batutrip', '', '1'),
 (137, 1, 'menu', '2015-12-07 03:04:47', '2015-12-07 09:40:57', 'trips/view', 'rencanakan perjalanan anda', 'My Trip', '', '1'),
-(138, 1, 'menu', '2015-12-07 03:06:47', '2015-12-07 09:49:43', 'trips', 'Daftar Trip', 'Trips', '', '1');
+(138, 1, 'menu', '2015-12-07 03:06:47', '2015-12-07 09:49:43', 'trips', 'Daftar Trip', 'Trips', '', '1'),
+(140, -1, 'trip', '2015-12-18 01:34:38', '2015-12-18 01:34:38', 'trips/view/140', 'My Trip', '', '', 'draft-anon'),
+(141, 1, 'trip', '2015-12-18 08:49:28', '2015-12-18 08:49:28', 'trips/view/141', 'My Trip', '', '', 'draft-anon');
 
 -- --------------------------------------------------------
 
@@ -263,6 +273,12 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `coordinate` varchar(45) DEFAULT NULL,
   `public` smallint(6) NOT NULL,
   `featured` tinyint(1) NOT NULL,
+  `subtitle` varchar(200) NOT NULL,
+  `detail` varchar(140) NOT NULL,
+  `akomodasi` varchar(200) NOT NULL,
+  `harga` varchar(300) NOT NULL,
+  `review` text NOT NULL,
+  `trivia` text NOT NULL,
   PRIMARY KEY (`post_id`),
   UNIQUE KEY `permalink` (`permalink`),
   KEY `node_id` (`post_type_id`)
@@ -272,19 +288,32 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `post_type_id`, `location`, `preview`, `thumbnail`, `cover`, `permalink`, `visited_last`, `visited_count`, `coordinate`, `public`, `featured`) VALUES
-(33, 2, 'Jalan Supados Rahmat 120', 'In the lorem lipsum var aguer tag as wal afiat', 'http://localhost/frame_work/assets/images/news-4.jpg', 'http://localhost/frame_work/assets/images/news-4.jpg', NULL, '2015-12-06 07:58:56', 26, '0', 1, 1),
-(34, 3, '', 'Lorep lispusum asum susum sumsum', 'false', 'false', 'campaign', '2015-10-09 23:21:13', 123, '2', 1, 0),
-(35, 3, '', '', NULL, NULL, NULL, '2015-10-07 02:49:35', 1, '0', 1, 0),
-(36, 3, '', 'Phasellus lobortis arcu in quam accumsan imperdiet. Ut sed nibh eu lacus consectetur aliquam nec at mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vulputate, ante in malesuada ullamcorper, leo arcu hendrerit arcu, nec tempor neque leo nec ligula.', '', '', 'hardship-from-developer', '2015-09-22 15:02:00', 4, '0', 1, 0),
-(37, 3, '', 'Proin sapien arcu, feugiat at velit vitae, vestibulum congue est. Praesent dolor est, vehicula a suscipit vitae, placerat non nisl. Fusce sed suscipit tortor. Aenean aliquam eu velit eu euismod. Nulla faucibus tellus ex, sit amet fermentum sem laoreet in. Nulla interdum sapien et metus vulputate, ultricies malesuada tortor ultrices. Cras condimentum nisi purus, ut rhoncus turpis laoreet at. Proin accumsan, sem vel porttitor porta, risus erat pulvinar lectus, porta auctor quam neque et elit. In malesuada massa id mi ornare lobortis. ', '', '', 'last-man', '2015-09-22 15:02:37', 2, '0', 1, 0),
-(38, 3, '', '', NULL, NULL, NULL, '2015-10-10 08:28:22', 41, '1', 1, 0),
-(41, 2, 'Jalan Ambarawa 123', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget vehicula sem. Donec vel tincidunt urna. Vestibulum sit amet sapien ut diam rhoncus ornare.', 'http://localhost/frame_work/assets/images/news-2.jpg', 'http://localhost/frame_work/assets/images/news-2.jpg', NULL, '2015-12-06 07:59:20', 12, '0', 1, 1),
-(57, 2, 'Jalan Sugino Tego', 'Returns the position where the needle exists relative to the beginnning of the haystack string (independent of search direction or offset). Also note that string positions start at 0, and not 1.', 'http://localhost/frame_work/assets/images/news-1.jpg', 'http://localhost/frame_work/assets/images/news-1.jpg', 'percobaan-post', '2015-12-06 07:59:13', 1, '0', 1, 1),
-(59, 3, '', 'But quality content isn’t all you expect when you buy a newspaper and it isn’t enough for blog writing either.\r\nAll newspapers make sure their content is easy to read by constraining the width of their columns and that’s what their readers expect.', 'false', 'false', '16-rules-of-blog-writing-and-layout', '2015-09-22 14:40:32', 79, '0', 1, 0),
-(60, 2, 'Jalan Mahmudi Gumilang', 'Hello wew..', NULL, NULL, 'hello-world', '2015-12-06 07:59:32', 5, '0', 0, 0),
-(106, 7, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo velit ut vulputate molestie.', '', '', 'daftar-ulang-2015', '2015-10-14 09:59:14', 6, '1', 1, 1),
-(107, 7, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo velit ut vulputate molestie.', '', '', 'daftar-ulang-genap-2015', '2015-10-10 08:11:22', 29, '1', 1, 0);
+INSERT INTO `posts` (`post_id`, `post_type_id`, `location`, `preview`, `thumbnail`, `cover`, `permalink`, `visited_last`, `visited_count`, `coordinate`, `public`, `featured`, `subtitle`, `detail`, `akomodasi`, `harga`, `review`, `trivia`) VALUES
+(33, 2, 'Jalan Supados Rahmat 120', 'In the lorem lipsum var aguer tag as wal afiat', 'http://localhost/frame_work/assets/images/news-4.jpg', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', NULL, '2015-12-18 00:42:33', 26, '-0.025824, 109.337739', 1, 1, '', '', '', '', '', ''),
+(34, 3, '', 'Lorep lispusum asum susum sumsum', 'false', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', 'campaign', '2015-12-18 00:42:39', 123, '-0.025824, 109.337739', 1, 0, '', '', '', '', '', ''),
+(35, 3, '', '', NULL, 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', NULL, '2015-12-18 00:42:40', 1, '-0.025824, 109.337739', 1, 0, '', '', '', '', '', ''),
+(36, 3, '', 'Phasellus lobortis arcu in quam accumsan imperdiet. Ut sed nibh eu lacus consectetur aliquam nec at mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vulputate, ante in malesuada ullamcorper, leo arcu hendrerit arcu, nec tempor neque leo nec ligula.', '', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', 'hardship-from-developer', '2015-12-18 00:42:41', 4, '-0.025824, 109.337739', 1, 0, '', '', '', '', '', ''),
+(37, 3, '', 'Proin sapien arcu, feugiat at velit vitae, vestibulum congue est. Praesent dolor est, vehicula a suscipit vitae, placerat non nisl. Fusce sed suscipit tortor. Aenean aliquam eu velit eu euismod. Nulla faucibus tellus ex, sit amet fermentum sem laoreet in. Nulla interdum sapien et metus vulputate, ultricies malesuada tortor ultrices. Cras condimentum nisi purus, ut rhoncus turpis laoreet at. Proin accumsan, sem vel porttitor porta, risus erat pulvinar lectus, porta auctor quam neque et elit. In malesuada massa id mi ornare lobortis. ', '', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', 'last-man', '2015-12-18 00:42:42', 2, '-0.025824, 109.337739', 1, 0, '', '', '', '', '', ''),
+(38, 3, '', '', NULL, 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', NULL, '2015-12-18 00:42:43', 41, '-0.025824, 109.337739', 1, 0, '', '', '', '', '', ''),
+(41, 2, 'Jalan Ambarawa 123', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget vehicula sem. Donec vel tincidunt urna. Vestibulum sit amet sapien ut diam rhoncus ornare.', 'http://localhost/frame_work/assets/images/news-2.jpg', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', NULL, '2015-12-18 00:42:43', 12, '-0.025824, 109.337739', 1, 1, '', '', '', '', '', ''),
+(57, 2, 'Jalan Sugino Tego', 'Returns the position where the needle exists relative to the beginnning of the haystack string (independent of search direction or offset). Also note that string positions start at 0, and not 1.', 'http://localhost/frame_work/assets/images/news-1.jpg', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', 'percobaan-post', '2015-12-18 00:42:44', 1, '-0.025824, 109.337739', 1, 1, '', '', '', '', '', ''),
+(59, 3, '', 'But quality content isn’t all you expect when you buy a newspaper and it isn’t enough for blog writing either.\r\nAll newspapers make sure their content is easy to read by constraining the width of their columns and that’s what their readers expect.', 'false', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', '16-rules-of-blog-writing-and-layout', '2015-12-18 00:42:45', 79, '-0.025824, 109.337739', 1, 0, '', '', '', '', '', ''),
+(60, 2, 'Jalan Mahmudi Gumilang', 'Hello wew..', NULL, 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', 'hello-world', '2015-12-18 00:42:45', 5, '-0.025824, 109.337739', 0, 0, '', '', '', '', '', ''),
+(106, 7, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo velit ut vulputate molestie.', '', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', 'daftar-ulang-2015', '2015-12-18 00:42:47', 6, '-0.025824, 109.337739', 1, 1, '', '', '', '', '', ''),
+(107, 7, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo velit ut vulputate molestie.', '', 'http://www.pontianakite.com/storage/destinasi/96da2f590cd7246bbde0051047b0d6f7c51ce410c124a10e0db5e4b97fc2af39/49f501cf0ae1123788335d2331478d26.jpg', 'daftar-ulang-genap-2015', '2015-12-18 00:42:49', 29, '-0.025824, 109.337739', 1, 0, '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_fav`
+--
+
+CREATE TABLE IF NOT EXISTS `post_fav` (
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`post_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -429,7 +458,15 @@ CREATE TABLE IF NOT EXISTS `trips` (
   `people_count` int(11) NOT NULL,
   `day_count` int(11) NOT NULL,
   PRIMARY KEY (`trip_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=142 ;
+
+--
+-- Dumping data for table `trips`
+--
+
+INSERT INTO `trips` (`trip_id`, `people_count`, `day_count`) VALUES
+(140, 0, 0),
+(141, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -478,7 +515,7 @@ INSERT INTO `users` (`user_id`, `created`, `name`, `username`, `pass`, `email`, 
 --
 ALTER TABLE `detail_trip`
   ADD CONSTRAINT `detail_trip_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trips` (`trip_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detail_trip_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `detail_trip_ibfk_3` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `menus`

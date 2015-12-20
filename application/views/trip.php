@@ -19,11 +19,13 @@
                             </thead>
                             <tbody>
                             <?php foreach($all as $trip){?>
+                                <tr>
                                 <td><?=$trip->title?></td>
                                 <td><?=$trip->name?></td>
                                 <td><?=$trip->status?></td>
                                 <td><?=$trip->created?></td>
                                 <td><a class="btn btn-default" href="<?=base_url('trips/view/'.$trip->trip_id)?>"><i class="fa fa-search"></i> Detail</a></td>
+                                </tr>
                             <?php }?>
                             </tbody>
                         </table>

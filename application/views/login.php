@@ -38,6 +38,9 @@
           </div>
             <?=$notice?>      
           <div class="row">
+            <div class="col-xs-8">
+              Belum punya akun? <a href="<?=base_url('login/signup')?>">Daftar Sekarang</a>
+            </div>
             <div class="col-xs-4 pull-right">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div><!-- /.col -->

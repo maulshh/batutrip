@@ -132,7 +132,7 @@ class Posts extends B_Controller {
         }
     }
 
-    public function cari($posttype, $query){
+    public function cari($posttype, $query = ''){
         $this->_loaddata('front-end', 'read');
         $this->data['pages'] = 'Hasil Pencarian';
         $like = array('content' => $query);

@@ -18,13 +18,8 @@
                                         echo date('d M Y', mktime(0,0,0,$tgl[2],$tgl[0],$tgl[1]))?></b></small>
                             </h4>
                         </div>
-                        <div class="col-xs-3">
-                            <div class="entry-content pull-right">
-                                <a href="<?= base_url($post->uri) ?>"><img class="img img-responsive" width="150" src="<?php echo $post->thumbnail==""?"http://southasia.oneworld.net/ImageCatalog/no-image-icon/image":$post->thumbnail;?>"></a>
-                            </div>
-                        </div>
-                        <article class="col-md-9">
-                            <p><?php echo $post->preview ?><br><a href="<?= base_url($post->uri) ?>">read more</a></p>
+                        <article class="col-md-12">
+                            <p><?php echo $post->content ?><br><a href="<?= base_url($post->uri) ?>">read more</a></p>
                         </article>
                         <hr>
                     <?php } ?>
